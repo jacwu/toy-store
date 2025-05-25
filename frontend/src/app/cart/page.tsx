@@ -260,10 +260,54 @@ const ContinueShoppingButton = styled(motion.a)`
   }
 `;
 
+const OrderSuccessContainer = styled(motion.div)`
+  background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
+  color: white;
+  border-radius: 12px;
+  padding: 2rem;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-bottom: 2rem;
+`;
+
+const SuccessIcon = styled.div`
+  font-size: 3rem;
+  margin-bottom: 1rem;
+`;
+
+const SuccessTitle = styled.h2`
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+`;
+
+const SuccessMessage = styled.p`
+  font-size: 1rem;
+  opacity: 0.9;
+  margin-bottom: 1.5rem;
+`;
+
+const BackToShoppingButton = styled(motion.button)`
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: 2px solid white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background: white;
+    color: #38a169;
+  }
+`;
+
 export default function CartPage() {
   const { items, updateQuantity, removeFromCart, getCartTotal } = useCart();
   const [loading, setLoading] = useState(false);
   const [imageErrors, setImageErrors] = useState<Record<number, boolean>>({});
+  const [orderSuccess, setOrderSuccess] = useState(false);
 
   const handleQuantityChange = (id: number, quantity: number) => {
     if (quantity > 0) {
@@ -274,14 +318,19 @@ export default function CartPage() {
   const handleImageError = (id: number) => {
     setImageErrors(prev => ({ ...prev, [id]: true }));
   };
-
   const handleCheckout = () => {
     setLoading(true);
     // Simulate checkout process
     setTimeout(() => {
-      alert('订单提交成功！感谢您的购买。');
       setLoading(false);
+      setOrderSuccess(true);
     }, 1500);
+  };
+
+  const handleBackToShopping = () => {
+    setOrderSuccess(false);
+    // Clear cart after successful order
+    items.forEach(item => removeFromCart(item.id));
   };
 
   const containerVariants = {
@@ -336,7 +385,6 @@ export default function CartPage() {
       </Container>
     );
   }
-
   return (
     <Container>
       <PageTitle
@@ -347,12 +395,37 @@ export default function CartPage() {
         购物车
       </PageTitle>
 
-      <motion.div
-        variants={containerVariants}
-        initial="hidden"
-        animate="visible"
-      >
-        <CartContainer variants={itemVariants}>
+      <AnimatePresence>
+        {orderSuccess && (
+          <OrderSuccessContainer
+            initial={{ opacity: 0, scale: 0.9, y: -20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.9, y: -20 }}
+            transition={{ duration: 0.5 }}
+          >
+            <SuccessIcon>✅</SuccessIcon>
+            <SuccessTitle>订单提交成功！</SuccessTitle>
+            <SuccessMessage>感谢您的购买，我们将尽快为您处理订单。</SuccessMessage>
+            <Link href="/" passHref>
+              <BackToShoppingButton
+                onClick={handleBackToShopping}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                继续购物
+              </BackToShoppingButton>
+            </Link>
+          </OrderSuccessContainer>
+        )}
+      </AnimatePresence>
+
+      {!orderSuccess && (
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+        >
+          <CartContainer variants={itemVariants}>
           <CartHeader>
             <div>商品</div>
             <div>名称</div>
@@ -436,8 +509,7 @@ export default function CartPage() {
           <SummaryRow>
             <span>总计:</span>
             <span>¥{getCartTotal().toFixed(2)}</span>
-          </SummaryRow>
-          <CheckoutButton
+          </SummaryRow>          <CheckoutButton
             onClick={handleCheckout}
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
@@ -445,7 +517,8 @@ export default function CartPage() {
             提交订单
           </CheckoutButton>
         </CartSummary>
-      </motion.div>
+        </motion.div>
+      )}
     </Container>
   );
 }
