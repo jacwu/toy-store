@@ -90,7 +90,21 @@ export const userApi = {
       throw error; // Fallback for non-Axios errors or if response is not there
     }
   },
-  // Potentially other user-related API functions like login, logout can be added here later
+  loginUser: async (username: string, password: string): Promise<any> => {
+    try {
+      const response = await apiClient.post('/api/users/login', { username, password });
+      return response.data; // The backend sends { success, message, data }
+    } catch (error) {
+      console.error('Error during user login:', error);
+      if (axios.isAxiosError(error)) {
+        if (error.response) {
+          // Throw the actual error message from the backend if available
+          throw error.response.data || error;
+        }
+      }
+      throw error; // Fallback for non-Axios errors or if response is not there
+    }
+  },
 };
 
 export default apiClient;

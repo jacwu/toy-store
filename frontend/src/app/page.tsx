@@ -9,6 +9,7 @@ import { Toy, ToyType } from '@/types';
 import ToyCard from '@/components/ToyCard';
 import ToyFilter from '@/components/ToyFilter';
 import Loading from '@/components/Loading';
+import { useAuth } from '@/contexts/AuthContext'; // Import useAuth
 
 const Container = styled.div`
   max-width: 1400px;
@@ -96,8 +97,10 @@ export default function HomePage() {
   const [filteredToys, setFilteredToys] = useState<Toy[]>([]);
   const [selectedTypeId, setSelectedTypeId] = useState<number | null>(null);
   const [searchQuery, setSearchQuery] = useState('');
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(true); // This is for toy data loading
   const [error, setError] = useState<string | null>(null);
+
+  const { user, isLoggedIn, isLoading: isAuthLoading } = useAuth(); // Auth state
 
   useEffect(() => {
     loadData();
@@ -199,8 +202,29 @@ export default function HomePage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
         >
-          发现各种精彩有趣的玩具，从益智玩具到遥控玩具，为您的孩子带来无尽的乐趣和学习体验
+          {/* Subtitle content will be conditional */}
         </HeroSubtitle>
+
+        {/* Conditional Subtitle Logic */}
+        {!isAuthLoading && isLoggedIn && user ? (
+          <HeroSubtitle
+            key="user-subtitle" // Adding key for AnimatePresence or conditional rendering
+            initial={{ opacity: 0, y: -30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+          >
+            你好, {user.username}! 欢迎回到玩具商店。
+          </HeroSubtitle>
+        ) : !isAuthLoading && !isLoggedIn ? (
+          <HeroSubtitle
+            key="guest-subtitle" // Adding key
+            initial={{ opacity: 0, y: -30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
+            发现各种精彩有趣的玩具，从益智玩具到遥控玩具，为您的孩子带来无尽的乐趣和学习体验
+          </HeroSubtitle>
+        ) : null } {/* Or a placeholder/spinner if isAuthLoading */}
       </Hero>
 
       {error && (

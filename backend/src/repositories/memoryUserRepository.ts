@@ -1,7 +1,7 @@
 import { User } from '../types/user';
 
 export class MemoryUserRepository {
-  private static users: User[] = [];
+  private static users: User[] = [{ id: 0, username: 'jacwu', password: 'jacwu' }];
   private static nextId = 1;
 
   static async findByUsername(username: string): Promise<User | undefined> {
@@ -21,7 +21,7 @@ export class MemoryUserRepository {
   }
 
   public static clear(): void {
-    MemoryUserRepository.users = [];
+    MemoryUserRepository.users = [{ id: 0, username: 'jacwu', password: 'jacwu' }];
     MemoryUserRepository.nextId = 1;
   }
 }
