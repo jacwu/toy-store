@@ -104,7 +104,7 @@ export default function AboutPage() {
             variants={itemVariants}
             transition={{ duration: 0.8 }}
           >
-            关于我们
+            关于
           </Title>
         </Hero>
 

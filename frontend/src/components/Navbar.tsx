@@ -148,7 +148,7 @@ export default function Navbar() {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              关于我们
+              关于
             </NavLink>
           </Link>
 
