@@ -102,6 +102,14 @@ export default function Navbar() {
               关于我们
             </NavLink>
           </Link>
+          <Link href="/register" passHref>
+            <NavLink
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              注册
+            </NavLink>
+          </Link>
           <CartButton
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
