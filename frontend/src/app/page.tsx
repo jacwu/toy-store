@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import styled from '@emotion/styled';
+import { useRouter } from 'next/navigation';
 import { toyApi, toyTypeApi } from '@/lib/api';
 import { Toy, ToyType } from '@/types';
 import ToyCard from '@/components/ToyCard';
@@ -153,9 +154,11 @@ export default function HomePage() {
     setFilteredToys(filtered);
   };
 
+  const router = useRouter();
+
   const handleToyClick = (toy: Toy) => {
-    // TODO: 导航到玩具详情页
-    console.log('Clicked toy:', toy);
+    // 导航到玩具详情页
+    router.push(`/toys/${toy.id}`);
   };
 
   const containerVariants = {

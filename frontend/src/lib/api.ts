@@ -26,8 +26,14 @@ export const toyApi = {
 
   // 根据ID获取玩具
   getToyById: async (id: number): Promise<Toy> => {
-    const response = await apiClient.get(`/api/toys/${id}`);
-    return response.data;
+    try {
+      const response = await apiClient.get(`/api/toys/${id}`);
+      // 后端直接返回data。如果找不到，则返回404
+      return response.data.data;
+    } catch (error) {
+      console.error(`获取玩具(ID: ${id})失败:`, error);
+      throw error;
+    }
   },
 
   // 创建玩具
