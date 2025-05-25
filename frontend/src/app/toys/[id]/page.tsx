@@ -93,22 +93,6 @@ const ToyDescription = styled(motion.p)`
   white-space: pre-wrap;
 `;
 
-const BackButton = styled(motion.button)`
-  display: inline-flex;
-  align-items: center;
-  padding: 0.5rem 1rem;
-  background: none;
-  border: none;
-  color: #4a5568;
-  font-weight: 500;
-  cursor: pointer;
-  margin-bottom: 1rem;
-  
-  &:hover {
-    color: #2d3748;
-  }
-`;
-
 const ErrorMessage = styled(motion.div)`
   background-color: #fff5f5;
   color: #c53030;
@@ -153,11 +137,6 @@ export default function ToyDetailPage() {
     setImageError(true);
   };
   
-  const handleBack = () => {
-    const router = useRouter();
-    router.back();
-  };
-  
   if (loading) {
     return (
       <Container>
@@ -169,7 +148,6 @@ export default function ToyDetailPage() {
   if (error) {
     return (
       <Container>
-        <BackButton onClick={handleBack}>← 返回</BackButton>
         <ErrorMessage
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -184,7 +162,6 @@ export default function ToyDetailPage() {
   if (!toy) {
     return (
       <Container>
-        <BackButton onClick={handleBack}>← 返回</BackButton>
         <ErrorMessage
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -197,15 +174,7 @@ export default function ToyDetailPage() {
   }
   
   return (
-    <Container>
-      <BackButton 
-        onClick={handleBack}
-        whileHover={{ x: -5 }}
-        whileTap={{ scale: 0.95 }}
-      >
-        ← 返回
-      </BackButton>
-      
+    <Container>      
       <ToyDetailContainer
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
