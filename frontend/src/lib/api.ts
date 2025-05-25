@@ -75,4 +75,22 @@ export const toyTypeApi = {
   },
 };
 
+export const userApi = {
+  registerUser: async (username: string, password: string): Promise<any> => {
+    try {
+      const response = await apiClient.post('/api/users/register', { username, password });
+      return response.data; // The backend sends { success, message, data }
+    } catch (error) {
+      console.error('Error during user registration:', error);
+      // It's important to throw the error so the component can handle it
+      if (axios.isAxiosError(error) && error.response) {
+        // Throw the actual error message from the backend if available
+        throw error.response.data || error; 
+      }
+      throw error; // Fallback for non-Axios errors or if response is not there
+    }
+  },
+  // Potentially other user-related API functions like login, logout can be added here later
+};
+
 export default apiClient;
