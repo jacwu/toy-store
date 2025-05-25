@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>玩具商店</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+        nav {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+        .logo {
+            color: white;
+            font-size: 1.8rem;
+            font-weight: 700;
+            text-decoration: none;
+        }
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        .nav-link {
+            color: white;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            text-decoration: none;
+        }
+        .cart-button {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            text-decoration: none;
+        }
+        .hero {
+            text-align: center;
+            padding: 3rem 1rem;
+            background: white;
+        }
+        .title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #2d3748;
+            margin-bottom: 1rem;
+        }
+        .subtitle {
+            font-size: 1.2rem;
+            color: #4a5568;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        .toy-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .toy-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        .toy-card:hover {
+            transform: translateY(-5px);
+        }
+        .toy-image {
+            width: 100%;
+            height: 180px;
+            background-color: #e2e8f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+        }
+        .toy-content {
+            padding: 1.5rem;
+        }
+        .toy-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 0.5rem;
+        }
+        .toy-description {
+            font-size: 0.9rem;
+            color: #4a5568;
+            margin-bottom: 1rem;
+        }
+        .toy-price {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #4a5568;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-content">
+            <a href="#" class="logo">🧸 玩具商店</a>
+            <div class="nav-links">
+                <a href="#" class="nav-link">首页</a>
+                <a href="#" class="nav-link">关于</a>
+                <a href="#" class="nav-link">登录</a>
+                <a href="#" class="nav-link">注册</a>
+                <a href="#" class="cart-button">购物车 (0)</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="hero">
+        <h1 class="title">欢迎来到玩具商店</h1>
+        <p class="subtitle">为您的孩子提供最优质、安全、有趣的玩具，让每一个童年都充满欢乐和创意。</p>
+    </div>
+
+    <div class="toy-grid">
+        <div class="toy-card">
+            <div class="toy-image">🧩</div>
+            <div class="toy-content">
+                <h3 class="toy-title">益智拼图</h3>
+                <p class="toy-description">培养逻辑思维和空间想象力的益智拼图，适合3-6岁儿童。</p>
+                <div class="toy-price">¥99.00</div>
+            </div>
+        </div>
+        <div class="toy-card">
+            <div class="toy-image">🚗</div>
+            <div class="toy-content">
+                <h3 class="toy-title">遥控赛车</h3>
+                <p class="toy-description">高性能遥控赛车，提升手眼协调能力，适合6岁以上儿童。</p>
+                <div class="toy-price">¥199.00</div>
+            </div>
+        </div>
+        <div class="toy-card">
+            <div class="toy-image">🏄‍♂️</div>
+            <div class="toy-content">
+                <h3 class="toy-title">儿童滑板</h3>
+                <p class="toy-description">安全稳固的儿童滑板，促进平衡感发展，适合5-10岁儿童。</p>
+                <div class="toy-price">¥159.00</div>
+            </div>
+        </div>
+        <div class="toy-card">
+            <div class="toy-image">🧸</div>
+            <div class="toy-content">
+                <h3 class="toy-title">毛绒玩具</h3>
+                <p class="toy-description">柔软舒适的毛绒玩具，培养情感表达能力，适合所有年龄段。</p>
+                <div class="toy-price">¥89.00</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
