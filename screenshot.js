@@ -1,14 +1,22 @@
-const { exec } = require('child_process');
+const { chromium } = require('playwright');
 
-console.log('Taking screenshot of the homepage...');
-// Use the wkhtmltoimage tool to take a screenshot
-exec('apt-get update && apt-get install -y wkhtmltopdf && wkhtmltoimage http://localhost:3001 /home/runner/work/toy-store/toy-store/homepage.png', (error, stdout, stderr) => {
-  if (error) {
-    console.error(`Error: ${error}`);
-    return;
-  }
-  console.log(`Screenshot taken: ${stdout}`);
-  if (stderr) {
-    console.error(`stderr: ${stderr}`);
-  }
+(async () => {
+  console.log('Launching browser...');
+  const browser = await chromium.launch();
+  const page = await browser.newPage();
+  
+  console.log('Navigating to homepage...');
+  // Navigate to the homepage
+  await page.goto('http://localhost:3001');
+  
+  console.log('Taking homepage screenshot...');
+  // Take a screenshot
+  await page.screenshot({ path: '/home/runner/work/toy-store/toy-store/homepage.png', fullPage: true });
+  
+  console.log('Screenshot saved: homepage.png');
+  
+  await browser.close();
+})().catch(err => {
+  console.error('Error occurred:', err);
+  process.exit(1);
 });
