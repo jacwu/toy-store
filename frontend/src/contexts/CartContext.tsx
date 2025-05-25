@@ -51,7 +51,11 @@ export function CartProvider({ children }: { children: ReactNode }) {
 
   // Save cart to localStorage whenever it changes
   useEffect(() => {
-    localStorage.setItem('toyStoreCart', JSON.stringify(items));
+    try {
+      localStorage.setItem('toyStoreCart', JSON.stringify(items));
+    } catch (error) {
+      console.error('Failed to save cart to localStorage:', error);
+    }
   }, [items]);
 
   // Add a toy to the cart
