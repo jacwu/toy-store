@@ -14,4 +14,20 @@ export class UserService {
       throw new Error('An unknown error occurred during user registration.');
     }
   }
+
+  static async login(userData: Pick<User, 'username' | 'password'>): Promise<Omit<User, 'password'>> {
+    const user = await MemoryUserRepository.findByUsername(userData.username);
+
+    if (!user) {
+      throw new Error('User not found');
+    }
+
+    if (user.password !== userData.password) {
+      throw new Error('Invalid credentials');
+    }
+
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const { password, ...userWithoutPassword } = user;
+    return userWithoutPassword;
+  }
 }
