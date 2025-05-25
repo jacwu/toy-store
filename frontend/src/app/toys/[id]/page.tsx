@@ -154,7 +154,8 @@ export default function ToyDetailPage() {
   };
   
   const handleBack = () => {
-    window.history.back();
+    const router = useRouter();
+    router.back();
   };
   
   if (loading) {
