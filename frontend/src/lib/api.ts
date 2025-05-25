@@ -28,8 +28,8 @@ export const toyApi = {
   getToyById: async (id: number): Promise<Toy> => {
     try {
       const response = await apiClient.get(`/api/toys/${id}`);
-      // 后端返回格式可能是: { success: true, data: {...} } 或直接是 toy 对象
-      return response.data?.data || response.data;
+      // 后端直接返回data。如果找不到，则返回404
+      return response.data.data;
     } catch (error) {
       console.error(`获取玩具(ID: ${id})失败:`, error);
       throw error;
