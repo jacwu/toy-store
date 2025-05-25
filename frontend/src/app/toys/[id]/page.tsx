@@ -135,8 +135,7 @@ export default function ToyDetailPage() {
           return;
         }
         
-        const response = await toyApi.getToyById(toyId);
-        const toyData = response.data || response;
+        const toyData = await toyApi.getToyById(toyId);
         setToy(toyData);
         setError(null);
       } catch (err) {
