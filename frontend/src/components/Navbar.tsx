@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import styled from '@emotion/styled';
 import Link from 'next/link';
+import { useCart } from '@/contexts/CartContext';
 
 const NavContainer = styled(motion.nav)`
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -47,7 +48,7 @@ const NavLink = styled(motion.a)`
   }
 `;
 
-const CartButton = styled(motion.button)`
+const CartButton = styled(motion.a)`
   background: rgba(255, 255, 255, 0.2);
   color: white;
   border: 2px solid rgba(255, 255, 255, 0.3);
@@ -55,6 +56,7 @@ const CartButton = styled(motion.button)`
   border-radius: 0.5rem;
   font-weight: 600;
   backdrop-filter: blur(10px);
+  cursor: pointer;
 
   &:hover {
     background: rgba(255, 255, 255, 0.3);
@@ -63,6 +65,9 @@ const CartButton = styled(motion.button)`
 `;
 
 export default function Navbar() {
+  const { getItemCount } = useCart();
+  const itemCount = getItemCount();
+  
   const navVariants = {
     hidden: { opacity: 0, y: -50 },
     visible: { opacity: 1, y: 0 },
@@ -102,6 +107,7 @@ export default function Navbar() {
               关于我们
             </NavLink>
           </Link>
+
           <Link href="/register" passHref>
             <NavLink
               whileHover={{ scale: 1.05 }}
@@ -110,12 +116,17 @@ export default function Navbar() {
               注册
             </NavLink>
           </Link>
-          <CartButton
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            购物车 (0)
-          </CartButton>
+
+
+          <Link href="/cart" passHref>
+            <CartButton
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              购物车 ({itemCount})
+            </CartButton>
+          </Link>
+
         </NavLinks>
       </NavContent>
     </NavContainer>

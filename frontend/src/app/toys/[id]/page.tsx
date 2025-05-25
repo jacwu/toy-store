@@ -1,13 +1,14 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { useParams } from 'next/navigation';
+import { useParams, useRouter } from 'next/navigation';
 import Image from 'next/image';
 import styled from '@emotion/styled';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Toy } from '@/types';
 import { toyApi } from '@/lib/api';
 import { Loading } from '@/components';
+import { useCart } from '@/contexts/CartContext';
 
 const Container = styled.div`
   max-width: 1200px;
@@ -102,12 +103,93 @@ const ErrorMessage = styled(motion.div)`
   text-align: center;
 `;
 
+const AddToCartSection = styled(motion.div)`
+  margin-top: auto;
+  padding-top: 1.5rem;
+  border-top: 1px solid #e2e8f0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+`;
+
+const QuantityControl = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+`;
+
+const QuantityLabel = styled.label`
+  font-weight: 500;
+  color: #4a5568;
+  min-width: 50px;
+`;
+
+const QuantityInput = styled.input`
+  width: 60px;
+  padding: 0.5rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 4px;
+  text-align: center;
+`;
+
+const QuantityButton = styled.button`
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #e2e8f0;
+  border: none;
+  border-radius: 4px;
+  font-weight: 600;
+  color: #4a5568;
+  cursor: pointer;
+  
+  &:hover {
+    background-color: #cbd5e0;
+  }
+`;
+
+const AddToCartButton = styled(motion.button)`
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: all 0.2s ease;
+  
+  &:hover {
+    opacity: 0.9;
+  }
+`;
+
+const SuccessMessage = styled(motion.div)`
+  background-color: #f0fff4;
+  color: #276749;
+  padding: 0.75rem;
+  border-radius: 8px;
+  margin-top: 1rem;
+  text-align: center;
+  font-weight: 500;
+`;
+
 export default function ToyDetailPage() {
   const { id } = useParams();
+  const router = useRouter();
   const [toy, setToy] = useState<Toy | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [imageError, setImageError] = useState(false);
+  const [quantity, setQuantity] = useState(1);
+  const [showSuccess, setShowSuccess] = useState(false);
+  
+  const { addToCart } = useCart();
   
   useEffect(() => {
     const fetchToy = async () => {
@@ -135,6 +217,37 @@ export default function ToyDetailPage() {
   
   const handleImageError = () => {
     setImageError(true);
+  };
+  
+  const handleQuantityChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = parseInt(e.target.value);
+    if (!isNaN(value) && value > 0) {
+      setQuantity(value);
+    }
+  };
+  
+  const decreaseQuantity = () => {
+    if (quantity > 1) {
+      setQuantity(quantity - 1);
+    }
+  };
+  
+  const increaseQuantity = () => {
+    setQuantity(quantity + 1);
+  };
+  
+  const handleAddToCart = () => {
+    if (toy) {
+      addToCart(toy, quantity);
+      setShowSuccess(true);
+      setTimeout(() => {
+        setShowSuccess(false);
+      }, 3000);
+    }
+  };
+  
+  const goToCart = () => {
+    router.push('/cart');
   };
   
   if (loading) {
@@ -222,6 +335,59 @@ export default function ToyDetailPage() {
           >
             {toy.detailDescription || toy.description}
           </ToyDescription>
+          
+          <AddToCartSection
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5, delay: 0.5 }}
+          >
+            <QuantityControl>
+              <QuantityLabel>数量:</QuantityLabel>
+              <QuantityButton onClick={decreaseQuantity}>-</QuantityButton>
+              <QuantityInput
+                type="number"
+                min="1"
+                value={quantity}
+                onChange={handleQuantityChange}
+              />
+              <QuantityButton onClick={increaseQuantity}>+</QuantityButton>
+            </QuantityControl>
+            
+            <div style={{ display: 'flex', gap: '1rem' }}>
+              <AddToCartButton
+                onClick={handleAddToCart}
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                加入购物车
+              </AddToCartButton>
+              
+              <AddToCartButton
+                onClick={goToCart}
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                style={{ 
+                  backgroundColor: '#4299e1', 
+                  background: 'linear-gradient(135deg, #4299e1 0%, #3182ce 100%)' 
+                }}
+              >
+                查看购物车
+              </AddToCartButton>
+            </div>
+            
+            <AnimatePresence>
+              {showSuccess && (
+                <SuccessMessage
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  ✅ 已成功添加到购物车
+                </SuccessMessage>
+              )}
+            </AnimatePresence>
+          </AddToCartSection>
         </ToyContent>
       </ToyDetailContainer>
     </Container>
