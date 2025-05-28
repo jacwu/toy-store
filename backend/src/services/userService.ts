@@ -30,4 +30,24 @@ export class UserService {
     const { password, ...userWithoutPassword } = user;
     return userWithoutPassword;
   }
+  
+  static async getAllUsers(): Promise<Omit<User, 'password'>[]> {
+    try {
+      // Get all users from repository
+      const users = await MemoryUserRepository.getAll();
+      
+      // Remove passwords before returning users
+      return users.map(user => {
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+        const { password, ...userWithoutPassword } = user;
+        return userWithoutPassword;
+      });
+    } catch (error) {
+      // Handle potential errors from the repository
+      if (error instanceof Error) {
+        throw new Error(`Error getting all users: ${error.message}`);
+      }
+      throw new Error('An unknown error occurred while retrieving users.');
+    }
+  }
 }
