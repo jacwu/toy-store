@@ -275,7 +275,7 @@ export default function OrdersPage() {
                           item.toy.name.charAt(0)
                         ) : (
                           <Image
-                            src={`/images/toys/${item.toy.id}.jpg`}
+                            src={`/images/toys/${item.toy.id}.png`}
                             alt={item.toy.name}
                             width={60}
                             height={60}
