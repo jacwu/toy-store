@@ -49,37 +49,41 @@ export default function RegisterPage() {
   };
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minHeight: '80vh' }}>
-      <h2>注册</h2>
-      <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', width: '300px', gap: '1rem' }}>
-        <div>
-          <label htmlFor="username">用户名:</label>
+    <div style={{ maxWidth: '400px', margin: '50px auto', padding: '20px', border: '1px solid #ccc', borderRadius: '8px' }}>
+      <h1 style={{ textAlign: 'center', marginBottom: '20px' }}>用户注册</h1>
+      <form onSubmit={handleSubmit}>
+        <div style={{ marginBottom: '15px' }}>
+          <label htmlFor="username" style={{ display: 'block', marginBottom: '5px' }}>用户名:</label>
           <input
-            type="text"
             id="username"
+            type="text"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
+            placeholder="请输入用户名"
             required
-            style={{ width: '100%', padding: '0.5rem', marginTop: '0.25rem' }}
+            disabled={isLoading}
+            style={{ width: '100%', padding: '10px', borderRadius: '4px', border: '1px solid #ddd' }}
           />
         </div>
-        <div>
-          <label htmlFor="password">密码:</label>
+        <div style={{ marginBottom: '20px' }}>
+          <label htmlFor="password" style={{ display: 'block', marginBottom: '5px' }}>密码:</label>
           <input
-            type="password"
             id="password"
+            type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            placeholder="请输入密码"
             required
-            style={{ width: '100%', padding: '0.5rem', marginTop: '0.25rem' }}
+            disabled={isLoading}
+            style={{ width: '100%', padding: '10px', borderRadius: '4px', border: '1px solid #ddd' }}
           />
         </div>
-        {error && <p style={{ color: 'red', textAlign: 'center' }}>{error}</p>}
-        {successMessage && <p style={{ color: 'green', textAlign: 'center' }}>{successMessage}</p>}
+        {error && <p style={{ color: 'red', textAlign: 'center', marginBottom: '15px' }}>{error}</p>}
+        {successMessage && <p style={{ color: 'green', textAlign: 'center', marginBottom: '15px' }}>{successMessage}</p>}
         <button 
           type="submit" 
-          disabled={isLoading} 
-          style={{ padding: '0.75rem', backgroundColor: isLoading ? '#ccc' : '#007bff', color: 'white', border: 'none', cursor: 'pointer' }}
+          disabled={isLoading}
+          style={{ width: '100%', padding: '10px 15px', backgroundColor: isLoading ? '#ccc' : '#007bff', color: 'white', border: 'none', borderRadius: '4px', cursor: 'pointer' }}
         >
           {isLoading ? '注册中...' : '注册'}
         </button>
