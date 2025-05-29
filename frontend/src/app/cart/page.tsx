@@ -305,7 +305,7 @@ const BackToShoppingButton = styled(motion.button)`
 `;
 
 export default function CartPage() {
-  const { items, updateQuantity, removeFromCart, getCartTotal } = useCart();
+  const { items, updateQuantity, removeFromCart, clearCart, getCartTotal } = useCart();
   const { addOrder } = useOrder();
   const [loading, setLoading] = useState(false);
   const [imageErrors, setImageErrors] = useState<Record<number, boolean>>({});
@@ -328,6 +328,9 @@ export default function CartPage() {
       const totalAmount = getCartTotal();
       addOrder(items, totalAmount);
       
+      // Clear cart after successful order
+      clearCart();
+      
       setLoading(false);
       setOrderSuccess(true);
     }, 1500);
@@ -335,8 +338,6 @@ export default function CartPage() {
 
   const handleBackToShopping = () => {
     setOrderSuccess(false);
-    // Clear cart after successful order
-    items.forEach(item => removeFromCart(item.id));
   };
 
   const containerVariants = {
