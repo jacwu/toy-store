@@ -13,7 +13,7 @@
     "@emotion/styled": "^11.11.0",
     "@emotion/css": "^11.11.2",
     "framer-motion": "^10.16.5",
-    "next": "14.0.3",
+    "next": "15.3.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "axios": "^1.6.2"
@@ -23,7 +23,7 @@
     "@types/react": "^18.2.37",
     "@types/react-dom": "^18.2.15",
     "eslint": "^8.54.0",
-    "eslint-config-next": "14.0.3",
+    "eslint-config-next": "15.3.2",
     "typescript": "^5.2.2"
   }
 }

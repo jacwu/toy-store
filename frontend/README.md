@@ -1,10 +1,10 @@
 # 玩具商店前端
 
-这是玩具商店的前端应用，使用 Next.js 14、TypeScript、Emotion 和 Framer Motion 构建。
+这是玩具商店的前端应用，使用 Next.js 15、TypeScript、Emotion 和 Framer Motion 构建。
 
 ## 技术栈
 
-- **Next.js 14** - React 框架
+- **Next.js 15.3.2** - React 框架
 - **TypeScript** - 类型安全
 - **Emotion** - CSS-in-JS 样式解决方案
 - **Framer Motion** - UI 交互动画库
