@@ -1,16 +1,13 @@
 'use client';
 
-// useEffect and useState are no longer needed for auth state here
-// import { useEffect, useState } from 'react'; 
-// useRouter is no longer needed for logout redirection
-// import { useRouter, usePathname } from 'next/navigation'; 
-import { usePathname } from 'next/navigation'; // Keep if other parts of Navbar use it
+import { usePathname } from 'next/navigation';
 import { motion } from 'framer-motion';
 import styled from '@emotion/styled';
 import Link from 'next/link';
 import { useCart } from '@/contexts/CartContext';
-import { useAuth } from '@/contexts/AuthContext'; // Import useAuth
+import { useAuth } from '@/contexts/AuthContext';
 
+// Make sure all styled components are defined correctly
 const NavContainer = styled(motion.nav)`
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   padding: 1rem 0;
@@ -29,7 +26,8 @@ const NavContent = styled.div`
   padding: 0 2rem;
 `;
 
-const Logo = styled(motion.h1)`
+// Changed from motion.h1 to motion.div to ensure it doesn't cause any rendering issues
+const Logo = styled(motion.div)`
   color: white;
   font-size: 1.8rem;
   font-weight: 700;
@@ -42,7 +40,8 @@ const NavLinks = styled.div`
   align-items: center;
 `;
 
-const NavLink = styled(motion.a)`
+// Changed from motion.a to motion.span to avoid nesting <a> tags
+const NavLink = styled(motion.span)`
   color: white;
   font-weight: 500;
   padding: 0.5rem 1rem;
@@ -77,7 +76,8 @@ const WelcomeText = styled(motion.span)`
   margin-right: 0.5rem; // Adjusted spacing
 `;
 
-const CartButton = styled(motion.a)`
+// Changed from motion.a to motion.span
+const CartButton = styled(motion.span)`
   background: rgba(255, 255, 255, 0.2);
   color: white;
   border: 2px solid rgba(255, 255, 255, 0.3);
@@ -96,26 +96,17 @@ const CartButton = styled(motion.a)`
 export default function Navbar() {
   const { getItemCount } = useCart();
   const itemCount = getItemCount();
-  // const router = useRouter(); // Not needed for logout anymore
   const pathname = usePathname(); // Keep if used for other path-dependent logic
   const { user, isLoggedIn, logout, isLoading } = useAuth(); // Use AuthContext
 
-  // Local state and useEffect for auth are removed. AuthProvider handles this.
-
   const handleLogout = () => {
     logout(); // Call logout from AuthContext
-    // Redirection is handled by AuthContext's logout
   };
   
   const navVariants = {
     hidden: { opacity: 0, y: -50 },
     visible: { opacity: 1, y: 0 },
   };
-
-  // Optionally, show a loading state or nothing until auth status is confirmed
-  // if (isLoading) {
-  //   return null; // Or a loading spinner, or a simplified Navbar
-  // }
 
   return (
     <NavContainer
@@ -124,8 +115,7 @@ export default function Navbar() {
       animate="visible"
       transition={{ duration: 0.6 }}
     >
-      <NavContent>
-        <Link href="/" passHref>
+      <NavContent>        <Link href="/" passHref>
           <Logo
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
@@ -160,7 +150,6 @@ export default function Navbar() {
             </NavLink>
           </Link>
 
-          {/* Display content based on isLoading and isLoggedIn */}
           {!isLoading && isLoggedIn && user ? (
             <>
               <WelcomeText
@@ -206,8 +195,7 @@ export default function Navbar() {
                 </NavLink>
               </Link>
             </>
-          ) : null} {/* Render nothing or a placeholder during isLoading */}
-
+          ) : null}
 
           <Link href="/cart" passHref>
             <CartButton

@@ -245,7 +245,7 @@ const EmptyCartText = styled.h2`
   margin-bottom: 1.5rem;
 `;
 
-const ContinueShoppingButton = styled(motion.a)`
+const ContinueShoppingButton = styled(motion.span)`
   display: inline-block;
   padding: 0.75rem 1.5rem;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);

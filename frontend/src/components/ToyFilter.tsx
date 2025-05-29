@@ -25,19 +25,20 @@ const FilterOptions = styled.div`
   gap: 0.75rem;
 `;
 
-const FilterButton = styled(motion.button)<{ active: boolean }>`
+// 修改为使用 data-active 属性而不是 active 属性
+const FilterButton = styled(motion.button)<{ 'data-active': boolean }>`
   padding: 0.5rem 1rem;
   border-radius: 2rem;
-  border: 2px solid ${props => props.active ? '#4299e1' : '#e2e8f0'};
-  background: ${props => props.active ? '#4299e1' : 'white'};
-  color: ${props => props.active ? 'white' : '#4a5568'};
+  border: 2px solid ${props => props['data-active'] ? '#4299e1' : '#e2e8f0'};
+  background: ${props => props['data-active'] ? '#4299e1' : 'white'};
+  color: ${props => props['data-active'] ? 'white' : '#4a5568'};
   font-weight: 500;
   font-size: 0.9rem;
   transition: all 0.2s ease;
 
   &:hover {
     border-color: #4299e1;
-    background: ${props => props.active ? '#3182ce' : '#f7fafc'};
+    background: ${props => props['data-active'] ? '#3182ce' : '#f7fafc'};
   }
 `;
 
@@ -94,9 +95,9 @@ export default function ToyFilter({
         onChange={(e) => onSearchChange(e.target.value)}
       />
       
-      <FilterTitle>按类型筛选</FilterTitle>
-      <FilterOptions>        <FilterButton
-          active={selectedTypeId === null}
+      <FilterTitle>按类型筛选</FilterTitle>      <FilterOptions>
+        <FilterButton
+          data-active={selectedTypeId === null}
           onClick={() => onTypeSelect(null)}
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
@@ -106,7 +107,7 @@ export default function ToyFilter({
         {Array.isArray(toyTypes) && toyTypes.map((type) => (
           <FilterButton
             key={type.id}
-            active={selectedTypeId === type.id}
+            data-active={selectedTypeId === type.id}
             onClick={() => onTypeSelect(type.id)}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
