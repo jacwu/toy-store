@@ -28,3 +28,18 @@ export interface UpdateToyRequest {
   price?: number;
   toyTypeId?: number;
 }
+
+export interface OrderItem {
+  id: number;
+  toy: Toy;
+  quantity: number;
+  price: number; // Price at time of order
+}
+
+export interface Order {
+  id: string;
+  timestamp: string;
+  items: OrderItem[];
+  totalAmount: number;
+  itemCount: number;
+}
