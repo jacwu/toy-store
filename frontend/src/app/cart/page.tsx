@@ -6,6 +6,7 @@ import styled from '@emotion/styled';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useCart } from '@/contexts/CartContext';
+import { useOrder } from '@/contexts/OrderContext';
 import { Loading } from '@/components';
 
 const Container = styled.div`
@@ -305,6 +306,7 @@ const BackToShoppingButton = styled(motion.button)`
 
 export default function CartPage() {
   const { items, updateQuantity, removeFromCart, getCartTotal } = useCart();
+  const { addOrder } = useOrder();
   const [loading, setLoading] = useState(false);
   const [imageErrors, setImageErrors] = useState<Record<number, boolean>>({});
   const [orderSuccess, setOrderSuccess] = useState(false);
@@ -322,6 +324,10 @@ export default function CartPage() {
     setLoading(true);
     // Simulate checkout process
     setTimeout(() => {
+      // Save order before clearing cart
+      const totalAmount = getCartTotal();
+      addOrder(items, totalAmount);
+      
       setLoading(false);
       setOrderSuccess(true);
     }, 1500);

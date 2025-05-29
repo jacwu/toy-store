@@ -151,6 +151,14 @@ export default function Navbar() {
               关于我们
             </NavLink>
           </Link>
+          <Link href="/orders" passHref>
+            <NavLink
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              我的订单
+            </NavLink>
+          </Link>
 
           {/* Display content based on isLoading and isLoggedIn */}
           {!isLoading && isLoggedIn && user ? (

@@ -3,6 +3,7 @@ import './globals.css';
 import Navbar from '@/components/Navbar';
 import { CartProvider } from '@/contexts/CartContext';
 import { AuthProvider } from '@/contexts/AuthContext'; // Import AuthProvider
+import { OrderProvider } from '@/contexts/OrderContext';
 
 export const metadata: Metadata = {
   title: '玩具商店 - 发现精彩玩具世界',
@@ -19,10 +20,12 @@ export default function RootLayout({
     <html lang="zh-CN">
       <body>
         <AuthProvider> {/* Wrap with AuthProvider */}
-          <CartProvider>
-            <Navbar />
-            <main>{children}</main>
-          </CartProvider>
+          <OrderProvider>
+            <CartProvider>
+              <Navbar />
+              <main>{children}</main>
+            </CartProvider>
+          </OrderProvider>
         </AuthProvider>
       </body>
     </html>
