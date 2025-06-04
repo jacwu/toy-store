@@ -1,0 +1,31 @@
+{
+  "name": "toy-store",
+  "version": "1.0.0",
+  "description": "玩具商店电子商务应用程序 - 包含前端和后端",
+  "private": true,
+  "scripts": {
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "dev:desktop": "concurrently \"npm run server\" \"npm run client\"",
+    "dev:codespaces": "concurrently \"npm run server\" \"npm run client\"",
+    "server": "cd backend && npm run dev",
+    "client": "cd frontend && npm run dev",
+    "build": "cd backend && npm run build && cd ../frontend && npm run build",
+    "start": "cd backend && npm start",
+    "install-all": "npm install && cd backend && npm install && cd ../frontend && npm install",
+    "setup": "npm run install-all && echo '✅ Setup complete! Run npm run dev to start development'",
+    "test": "cd backend && npm test"
+  },
+  "keywords": [
+    "toy-store",
+    "ecommerce",
+    "typescript",
+    "next.js",
+    "express",
+    "react"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
