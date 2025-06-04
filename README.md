@@ -29,3 +29,68 @@
 ## 项目愿景
 
 为家长和孩子提供一个安全、便捷、有趣的在线玩具购物体验，帮助孩子在玩乐中学习成长。
+
+## 快速开始
+
+### 安装依赖
+```bash
+npm run install-all
+```
+
+### 启动开发服务器
+```bash
+npm run dev
+```
+
+这将同时启动：
+- 后端服务器：http://localhost:3000
+- 前端应用：http://localhost:3001
+
+### 构建项目
+```bash
+npm run build
+```
+
+### 运行测试
+
+#### 后端单元测试
+```bash
+npm test
+```
+
+#### 端到端测试
+```bash
+# 运行 E2E 测试
+npm run test:e2e
+
+# 在可视化模式下运行
+npm run test:e2e:headed
+
+# 运行所有测试（单元测试 + E2E测试）
+npm run test:all
+```
+
+## 项目结构
+
+- `frontend/` - Next.js 前端应用
+- `backend/` - Express.js 后端API
+- `tests/` - Playwright E2E 测试
+- `user-stories/` - 用户故事文档
+
+## 技术栈
+
+### 前端
+- **框架**：Next.js 14 (React)
+- **语言**：TypeScript
+- **样式**：Emotion (CSS-in-JS)
+- **动画**：Framer Motion
+- **HTTP客户端**：Axios
+
+### 后端
+- **框架**：Express.js
+- **语言**：TypeScript
+- **数据存储**：内存存储（可扩展为数据库）
+
+### 测试
+- **E2E测试**：Playwright
+- **单元测试**：Jest
