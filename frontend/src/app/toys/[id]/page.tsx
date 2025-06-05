@@ -169,6 +169,27 @@ const AddToCartButton = styled(motion.button)`
   }
 `;
 
+const CommentsButton = styled(motion.button)`
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  color: white;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: all 0.2s ease;
+  margin-bottom: 1.5rem;
+  font-size: 0.9rem;
+  
+  &:hover {
+    opacity: 0.9;
+  }
+`;
+
 const SuccessMessage = styled(motion.div)`
   background-color: #f0fff4;
   color: #276749;
@@ -248,6 +269,12 @@ export default function ToyDetailPage() {
   
   const goToCart = () => {
     router.push('/cart');
+  };
+
+  const goToComments = () => {
+    if (toy) {
+      router.push(`/toys/${toy.id}/comments`);
+    }
   };
   
   if (loading) {
@@ -335,6 +362,17 @@ export default function ToyDetailPage() {
           >
             {toy.detailDescription || toy.description}
           </ToyDescription>
+
+          <CommentsButton
+            onClick={goToComments}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.45 }}
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+          >
+            💬 查看评论
+          </CommentsButton>
           
           <AddToCartSection
             initial={{ opacity: 0 }}

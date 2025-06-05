@@ -29,6 +29,27 @@ export interface UpdateToyRequest {
   toyTypeId?: number;
 }
 
+export interface Comment {
+  id: number;
+  toyId: number;
+  author: string;
+  content: string;
+  rating: number; // 1-5 stars
+  createdAt: string; // ISO date string
+}
+
+export interface CreateCommentRequest {
+  author: string;
+  content: string;
+  rating: number;
+}
+
+export interface UpdateCommentRequest {
+  author?: string;
+  content?: string;
+  rating?: number;
+}
+
 export interface OrderItem {
   id: number;
   toy: Toy;

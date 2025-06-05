@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { Toy, ToyType, CreateToyRequest, UpdateToyRequest } from '@/types';
+import { Toy, ToyType, CreateToyRequest, UpdateToyRequest, Comment, CreateCommentRequest, UpdateCommentRequest } from '@/types';
 
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';
 
@@ -72,6 +72,72 @@ export const toyTypeApi = {
   getToyTypeById: async (id: number): Promise<ToyType> => {
     const response = await apiClient.get(`/api/toy-types/${id}`);
     return response.data;
+  },
+};
+
+export const commentApi = {
+  // 获取玩具的所有评论
+  getCommentsByToyId: async (toyId: number): Promise<Comment[]> => {
+    try {
+      const response = await apiClient.get(`/api/toys/${toyId}/comments`);
+      const data = response.data?.data || response.data;
+      return Array.isArray(data) ? data : [];
+    } catch (error) {
+      console.error(`获取玩具(ID: ${toyId})评论失败:`, error);
+      return [];
+    }
+  },
+
+  // 根据ID获取评论
+  getCommentById: async (id: number): Promise<Comment> => {
+    try {
+      const response = await apiClient.get(`/api/comments/${id}`);
+      return response.data.data;
+    } catch (error) {
+      console.error(`获取评论(ID: ${id})失败:`, error);
+      throw error;
+    }
+  },
+
+  // 创建评论
+  createComment: async (toyId: number, comment: CreateCommentRequest): Promise<Comment> => {
+    try {
+      const response = await apiClient.post(`/api/toys/${toyId}/comments`, comment);
+      return response.data.data;
+    } catch (error) {
+      console.error('创建评论失败:', error);
+      if (axios.isAxiosError(error) && error.response) {
+        throw error.response.data || error;
+      }
+      throw error;
+    }
+  },
+
+  // 更新评论
+  updateComment: async (id: number, comment: UpdateCommentRequest): Promise<Comment> => {
+    try {
+      const response = await apiClient.put(`/api/comments/${id}`, comment);
+      return response.data.data;
+    } catch (error) {
+      console.error('更新评论失败:', error);
+      if (axios.isAxiosError(error) && error.response) {
+        throw error.response.data || error;
+      }
+      throw error;
+    }
+  },
+
+  // 删除评论
+  deleteComment: async (id: number): Promise<void> => {
+    try {
+      await apiClient.delete(`/api/comments/${id}`);
+    } catch (error) {
+      console.error('删除评论失败:', error);
+      if (axios.isAxiosError(error) && error.response) {
+        throw error.response.data || error;
+      }
+      throw error;
+    }
   },
 };
 
