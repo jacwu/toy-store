@@ -9,7 +9,16 @@ export class ToyController {
    */
   static async getToysByTypeId(req: Request, res: Response, next: NextFunction): Promise<void> {
     try {
-      const toyTypeId = parseInt(req.params.toyTypeId);
+      const toyTypeIdParam = req.params.toyTypeId;
+      if (!toyTypeIdParam) {
+        res.status(400).json({
+          success: false,
+          message: '缺少玩具类型 ID 参数'
+        });
+        return;
+      }
+      
+      const toyTypeId = parseInt(toyTypeIdParam);
       
       if (isNaN(toyTypeId) || toyTypeId < 0) {
         res.status(400).json({
@@ -52,7 +61,16 @@ export class ToyController {
    */
   static async getToyById(req: Request, res: Response, next: NextFunction): Promise<void> {
     try {
-      const id = parseInt(req.params.id);
+      const idParam = req.params.id;
+      if (!idParam) {
+        res.status(400).json({
+          success: false,
+          message: '缺少玩具 ID 参数'
+        });
+        return;
+      }
+      
+      const id = parseInt(idParam);
       
       if (isNaN(id)) {
         res.status(400).json({
@@ -123,7 +141,16 @@ export class ToyController {
    */
   static async updateToy(req: Request, res: Response, next: NextFunction): Promise<void> {
     try {
-      const id = parseInt(req.params.id);
+      const idParam = req.params.id;
+      if (!idParam) {
+        res.status(400).json({
+          success: false,
+          message: '缺少玩具 ID 参数'
+        });
+        return;
+      }
+      
+      const id = parseInt(idParam);
       
       if (isNaN(id)) {
         res.status(400).json({
@@ -176,7 +203,16 @@ export class ToyController {
    */
   static async deleteToy(req: Request, res: Response, next: NextFunction): Promise<void> {
     try {
-      const id = parseInt(req.params.id);
+      const idParam = req.params.id;
+      if (!idParam) {
+        res.status(400).json({
+          success: false,
+          message: '缺少玩具 ID 参数'
+        });
+        return;
+      }
+      
+      const id = parseInt(idParam);
       
       if (isNaN(id)) {
         res.status(400).json({
