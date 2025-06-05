@@ -22,7 +22,16 @@ export class ToyTypeController {  /**
    */
   static async getToyTypeById(req: Request, res: Response, next: NextFunction): Promise<void> {
     try {
-      const id = parseInt(req.params.id);
+      const idParam = req.params.id;
+      if (!idParam) {
+        res.status(400).json({
+          success: false,
+          message: '缺少玩具类型 ID 参数'
+        });
+        return;
+      }
+      
+      const id = parseInt(idParam);
       
       if (isNaN(id)) {
         res.status(400).json({
@@ -86,7 +95,16 @@ export class ToyTypeController {  /**
    */
   static async updateToyType(req: Request, res: Response, next: NextFunction): Promise<void> {
     try {
-      const id = parseInt(req.params.id);
+      const idParam = req.params.id;
+      if (!idParam) {
+        res.status(400).json({
+          success: false,
+          message: '缺少玩具类型 ID 参数'
+        });
+        return;
+      }
+      
+      const id = parseInt(idParam);
       
       if (isNaN(id)) {
         res.status(400).json({
@@ -132,7 +150,16 @@ export class ToyTypeController {  /**
    */
   static async deleteToyType(req: Request, res: Response, next: NextFunction): Promise<void> {
     try {
-      const id = parseInt(req.params.id);
+      const idParam = req.params.id;
+      if (!idParam) {
+        res.status(400).json({
+          success: false,
+          message: '缺少玩具类型 ID 参数'
+        });
+        return;
+      }
+      
+      const id = parseInt(idParam);
       
       if (isNaN(id)) {
         res.status(400).json({
