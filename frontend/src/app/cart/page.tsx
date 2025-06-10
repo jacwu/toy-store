@@ -371,7 +371,7 @@ export default function CartPage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-          购物车
+          Shopping Cart
         </PageTitle>
         <EmptyCartMessage
           initial={{ opacity: 0, scale: 0.9 }}
@@ -379,13 +379,13 @@ export default function CartPage() {
           transition={{ duration: 0.5 }}
         >
           <EmptyCartIcon>🛒</EmptyCartIcon>
-          <EmptyCartText>您的购物车是空的</EmptyCartText>
+          <EmptyCartText>Your shopping cart is empty</EmptyCartText>
           <Link href="/" passHref>
             <ContinueShoppingButton
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              继续购物
+              Continue Shopping
             </ContinueShoppingButton>
           </Link>
         </EmptyCartMessage>
@@ -399,7 +399,7 @@ export default function CartPage() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
       >
-        购物车
+        Shopping Cart
       </PageTitle>
 
       <AnimatePresence>
@@ -419,7 +419,7 @@ export default function CartPage() {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                继续购物
+                Continue Shopping
               </BackToShoppingButton>
             </Link>
           </OrderSuccessContainer>
@@ -437,8 +437,8 @@ export default function CartPage() {
             <div>商品</div>
             <div>名称</div>
             <div>单价</div>
-            <div>数量</div>
-            <div>小计</div>
+            <div>Quantity</div>
+            <div>Subtotal</div>
             <div></div>
           </CartHeader>
 
@@ -514,7 +514,7 @@ export default function CartPage() {
             <span>{items.reduce((sum, item) => sum + item.quantity, 0)} 件</span>
           </SummaryRow>
           <SummaryRow>
-            <span>总计:</span>
+            <span>Total:</span>
             <span>¥{getCartTotal().toFixed(2)}</span>
           </SummaryRow>          <CheckoutButton
             onClick={handleCheckout}
