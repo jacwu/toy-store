@@ -104,7 +104,7 @@ export default function AboutPage() {
             variants={itemVariants}
             transition={{ duration: 0.8 }}
           >
-            关于我们
+            About Us
           </Title>
         </Hero>
 
@@ -113,31 +113,32 @@ export default function AboutPage() {
           transition={{ duration: 0.6 }}
         >
           <Section>
-            <SectionTitle>我们的使命</SectionTitle>
+            <SectionTitle>Our Mission</SectionTitle>
             <Text>
-              玩具商店致力于为全世界的孩子们提供最优质、最有趣的玩具体验。我们相信玩具不仅仅是娱乐工具，
-              更是孩子们学习、成长和发展创造力的重要伙伴。
+              Toy Store is dedicated to providing the highest quality and most enjoyable toy experiences 
+              for children around the world. We believe that toys are not just entertainment tools, 
+              but important companions for children&apos;s learning, growth, and creativity development.
             </Text>
           </Section>
 
           <Section>
-            <SectionTitle>产品特色</SectionTitle>
+            <SectionTitle>Product Features</SectionTitle>
             <FeatureList>
-              <FeatureItem>益智玩具：开发智力，培养逻辑思维能力</FeatureItem>
-              <FeatureItem>遥控玩具：提升手眼协调，增强操控技能</FeatureItem>
-              <FeatureItem>户外玩具：促进运动，培养户外活动兴趣</FeatureItem>
-              <FeatureItem>玩偶玩具：培养情感表达和社交能力</FeatureItem>
+              <FeatureItem>Educational Toys: Develop intelligence and logical thinking skills</FeatureItem>
+              <FeatureItem>Remote Control Toys: Improve hand-eye coordination and control skills</FeatureItem>
+              <FeatureItem>Outdoor Toys: Promote exercise and cultivate interest in outdoor activities</FeatureItem>
+              <FeatureItem>Doll Toys: Foster emotional expression and social skills</FeatureItem>
             </FeatureList>
           </Section>
 
           <Section>
-            <SectionTitle>我们的承诺</SectionTitle>
+            <SectionTitle>Our Commitment</SectionTitle>
             <Text>
-              我们严格把控产品质量，所有玩具均经过安全认证，使用环保材料制作。
-              我们承诺为每一位顾客提供优质的购物体验和完善的售后服务。
+              We strictly control product quality, all toys have passed safety certification and are made with eco-friendly materials.
+              We promise to provide high-quality shopping experience and comprehensive after-sales service to every customer.
             </Text>
             <Text>
-              让每个孩子都能在安全、快乐的环境中享受玩具带来的无穷乐趣，这是我们永恒的追求。
+              Ensuring every child can enjoy endless fun from toys in a safe and happy environment is our eternal pursuit.
             </Text>
           </Section>
         </Content>
