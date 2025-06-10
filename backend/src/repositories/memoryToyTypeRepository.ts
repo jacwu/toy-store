@@ -1,29 +1,29 @@
 import { ToyType, CreateToyTypeRequest, UpdateToyTypeRequest } from '../types/toyType';
 
-// 内存中的玩具类型数据存储
+// In-memory toy type data storage
 let toyTypesData: ToyType[] = [
   {
     id: 1,
-    name: '益智玩具',
-    description: '如拼图、积木等，帮助开发逻辑思维和创造力',
+    name: 'Educational Toys',
+    description: 'Such as puzzles, building blocks, etc., help develop logical thinking and creativity',
     icon: '🧩'
   },
   {
     id: 2,
-    name: '遥控玩具',
-    description: '如遥控车、无人机等，提供互动娱乐体验',
+    name: 'Remote Control Toys',
+    description: 'Such as RC cars, drones, etc., provide interactive entertainment experience',
     icon: '🚗'
   },
   {
     id: 3,
-    name: '户外玩具',
-    description: '如滑板车、秋千等，鼓励户外活动和运动',
+    name: 'Outdoor Toys',
+    description: 'Such as scooters, swings, etc., encourage outdoor activities and sports',
     icon: '🛴'
   },
   {
     id: 4,
-    name: '玩偶玩具',
-    description: '布娃娃等，培养情感表达和照顾能力',
+    name: 'Doll Toys',
+    description: 'Dolls, etc., foster emotional expression and caring abilities',
     icon: '🧸'
   }
 ];
@@ -32,14 +32,14 @@ let nextId = 5;
 
 export class MemoryToyTypeRepository {
   /**
-   * 获取所有玩具类型
+   * Get all toy types
    */
   static async findAll(): Promise<ToyType[]> {
     return [...toyTypesData];
   }
 
   /**
-   * 根据 ID 获取玩具类型
+   * Get toy type by ID
    */
   static async findById(id: number): Promise<ToyType | null> {
     const toyType = toyTypesData.find(t => t.id === id);

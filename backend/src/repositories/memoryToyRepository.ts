@@ -1,68 +1,68 @@
 import { Toy, CreateToyRequest, UpdateToyRequest } from '../types/toy';
 
-// 内存中的玩具数据存储
+// In-memory toy data storage
 let toysData: Toy[] = [
   {
     id: 1,
-    name: '乐高经典创意积木盒',
-    description: '包含484个积木，适合4-99岁，激发无限创造力',
-    detailDescription: '这款乐高经典创意积木盒是培养想象力和创造力的完美选择。包含484个高质量的积木块，采用经典的红、黄、蓝、绿等鲜艳颜色。适合4-99岁的所有年龄段，可以搭建房屋、车辆、动物等各种造型。积木采用环保ABS材料制造，安全无毒，边角圆润不伤手。配有详细的搭建说明书，同时鼓励自由创作。',
+    name: 'LEGO Classic Creative Building Box',
+    description: 'Contains 484 pieces, suitable for ages 4-99, sparks unlimited creativity',
+    detailDescription: 'This LEGO Classic Creative Building Box is the perfect choice for fostering imagination and creativity. Contains 484 high-quality building blocks in classic bright colors like red, yellow, blue, and green. Suitable for ages 4-99, can build houses, vehicles, animals and various shapes. Blocks are made from eco-friendly ABS material, safe and non-toxic, with rounded corners that won\'t hurt hands. Comes with detailed building instructions while encouraging free creation.',
     price: 299.99,
     toyTypeId: 1
   },
   {
     id: 2,
-    name: '1000片拼图-世界名画',
-    description: '高品质纸质拼图，完成后可裱框装饰',
-    detailDescription: '精选世界著名画作设计的1000片拼图，采用高品质厚纸板制造，色彩还原度极高。每片拼图都经过精密切割，拼接紧密无缝。完成尺寸为70×50cm，完成后可作为艺术品装裱悬挂。拼图过程能有效锻炼观察力、耐心和专注力，是放松身心的绝佳选择。包装盒内附有参考图和拼图技巧指导。',
+    name: '1000-Piece Puzzle - World Famous Paintings',
+    description: 'High-quality paper puzzle, can be framed for decoration when completed',
+    detailDescription: '1000-piece puzzle featuring world-famous paintings, made from high-quality thick cardboard with excellent color reproduction. Each piece is precision-cut for tight, seamless fitting. Completed size is 70×50cm, perfect for framing as artwork when finished. The puzzle process effectively exercises observation, patience and concentration, making it an excellent choice for relaxation. Package includes reference image and puzzle solving tips.',
     price: 89.99,
     toyTypeId: 1
   },
   {
     id: 3,
-    name: '遥控四驱越野车',
-    description: '1:14比例，防水设计，最高时速25km/h',
-    detailDescription: '专业级遥控四驱越野车，采用1:14仿真比例设计。配备强劲的无刷电机，最高时速可达25km/h。车身采用防水设计，可在雨天或水坑中行驶。四轮独立悬挂系统，能够轻松应对各种复杂地形。2.4GHz遥控器，控制距离达100米，支持多台同时操控不干扰。电池续航时间25分钟，充电时间2小时。',
+    name: 'Remote Control 4WD Off-Road Vehicle',
+    description: '1:14 scale, waterproof design, top speed 25km/h',
+    detailDescription: 'Professional remote control 4WD off-road vehicle with realistic 1:14 scale design. Equipped with powerful brushless motor, top speed reaches 25km/h. Vehicle features waterproof design, can drive in rain or through puddles. Four-wheel independent suspension system easily handles various complex terrains. 2.4GHz remote controller with 100-meter control range, supports multiple simultaneous operation without interference. Battery life 25 minutes, charging time 2 hours.',
     price: 459.99,
     toyTypeId: 2
   },
   {
     id: 4,
-    name: '航拍无人机',
-    description: '4K高清摄像头，30分钟续航，适合入门者',
-    detailDescription: '入门级航拍无人机，配备4K超高清摄像头，支持实时图传和录像功能。采用GPS定位系统，具备一键返航、定点悬停等智能功能。30分钟超长续航，满足各种拍摄需求。机身轻巧便携，折叠后仅手掌大小。配备智能避障系统，安全性大大提升。操作简单，适合初学者入门使用。',
+    name: 'Aerial Photography Drone',
+    description: '4K HD camera, 30-minute battery life, suitable for beginners',
+    detailDescription: 'Entry-level aerial photography drone equipped with 4K ultra-high-definition camera, supports real-time image transmission and recording. Features GPS positioning system with one-key return, fixed-point hovering and other intelligent functions. 30-minute super long battery life meets various shooting needs. Lightweight and portable body, folds to palm size. Equipped with intelligent obstacle avoidance system for greatly improved safety. Simple operation, suitable for beginners.',
     price: 899.99,
     toyTypeId: 2
   },
   {
     id: 5,
-    name: '儿童滑板车',
-    description: '三轮设计，LED车轮，适合3-8岁儿童',
-    detailDescription: '专为3-8岁儿童设计的安全滑板车，采用前二后一的三轮稳定结构。车轮内置LED灯，滑行时自动发光，增加趣味性和夜间安全性。把手高度三档可调（65-85cm），伴随孩子成长。踏板采用防滑设计，宽大舒适。车身采用优质铝合金材料，轻便且耐用。配备后轮刹车系统，确保安全。承重可达50kg。',
+    name: 'Children\'s Scooter',
+    description: 'Three-wheel design, LED wheels, suitable for ages 3-8',
+    detailDescription: 'Safety scooter designed specifically for children ages 3-8, featuring a stable two-front-one-rear three-wheel structure. Wheels have built-in LED lights that automatically illuminate when riding, adding fun and nighttime safety. Handle height adjustable in three levels (65-85cm), grows with the child. Deck features anti-slip design, wide and comfortable. Body made from high-quality aluminum alloy, lightweight yet durable. Equipped with rear wheel brake system for safety. Weight capacity up to 50kg.',
     price: 189.99,
     toyTypeId: 3
   },
   {
     id: 6,
-    name: '户外秋千套装',
-    description: '承重100kg，安全绳索，适合花园安装',
-    detailDescription: '专业级户外秋千套装，采用优质橡木制作座椅，表面光滑无刺。配备高强度尼龙绳索，经过严格安全测试，承重可达100kg。绳索长度可调节（1.5-2.5米），适合不同安装高度。座椅设计符合人体工学，舒适安全。安装简单，配备详细说明书和安装工具。适合花园、公园等户外环境安装使用。',
+    name: 'Outdoor Swing Set',
+    description: 'Weight capacity 100kg, safety rope, suitable for garden installation',
+    detailDescription: 'Professional outdoor swing set with high-quality oak seat, smooth and splinter-free surface. Equipped with high-strength nylon rope that has passed strict safety testing, weight capacity up to 100kg. Rope length adjustable (1.5-2.5 meters), suitable for different installation heights. Seat design follows ergonomic principles, comfortable and safe. Easy installation with detailed instructions and installation tools included. Suitable for gardens, parks and other outdoor environments.',
     price: 329.99,
     toyTypeId: 3
   },
   {
     id: 7,
-    name: '毛绒泰迪熊',
-    description: '超软材质，35cm高，适合所有年龄段',
-    detailDescription: '经典泰迪熊毛绒玩具，采用顶级超柔短毛绒制作，手感细腻温暖。内部填充优质PP棉，饱满有弹性，抱感舒适。35cm的完美尺寸，适合拥抱和携带。五官采用刺绣工艺，安全无脱落风险。通过国际玩具安全标准认证，适合所有年龄段。经典棕色设计，是陪伴成长的最佳伙伴。可机洗，方便日常护理。',
+    name: 'Plush Teddy Bear',
+    description: 'Ultra-soft material, 35cm height, suitable for all ages',
+    detailDescription: 'Classic teddy bear plush toy made from premium ultra-soft short pile fur with delicate, warm texture. Internal filling of high-quality PP cotton, full and elastic with comfortable hugging feel. Perfect 35cm size, suitable for hugging and carrying. Facial features use embroidery craftsmanship with no risk of detachment. Passes international toy safety standards, suitable for all ages. Classic brown design, the best companion for growing up. Machine washable for easy daily care.',
     price: 79.99,
     toyTypeId: 4
   },
   {
     id: 8,
-    name: '芭比娃娃套装',
-    description: '包含娃娃和配件，可换装，培养想象力',
-    detailDescription: '时尚芭比娃娃套装，包含29cm高的芭比娃娃一个和丰富配件。配有5套不同风格的服装（休闲、正装、晚礼服、运动装、睡衣），10双精美鞋子，以及各种首饰配件。娃娃关节可活动，支持多种造型摆拍。头发可梳理造型，培养孩子的审美和创造力。所有配件均采用环保材料制作，安全无毒。是角色扮演和想象力游戏的完美选择。',
+    name: 'Barbie Doll Set',
+    description: 'Includes doll and accessories, changeable outfits, fosters imagination',
+    detailDescription: 'Fashion Barbie doll set includes one 29cm tall Barbie doll and rich accessories. Comes with 5 different style outfits (casual, formal, evening gown, sportswear, pajamas), 10 pairs of exquisite shoes, and various jewelry accessories. Doll joints are movable, supporting multiple poses for photography. Hair can be styled and arranged, fostering children\'s aesthetic sense and creativity. All accessories made from eco-friendly materials, safe and non-toxic. Perfect choice for role-playing and imagination games.',
     price: 129.99,
     toyTypeId: 4
   },  // toyTypeId: 1
