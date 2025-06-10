@@ -1,260 +1,260 @@
 import { Toy, CreateToyRequest, UpdateToyRequest } from '../types/toy';
 
-// 内存中的玩具数据存储
+// In-memory toy data storage
 let toysData: Toy[] = [
   {
     id: 1,
-    name: '乐高经典创意积木盒',
-    description: '包含484个积木，适合4-99岁，激发无限创造力',
-    detailDescription: '这款乐高经典创意积木盒是培养想象力和创造力的完美选择。包含484个高质量的积木块，采用经典的红、黄、蓝、绿等鲜艳颜色。适合4-99岁的所有年龄段，可以搭建房屋、车辆、动物等各种造型。积木采用环保ABS材料制造，安全无毒，边角圆润不伤手。配有详细的搭建说明书，同时鼓励自由创作。',
+    name: 'LEGO Classic Creative Building Box',
+    description: 'Contains 484 pieces, suitable for ages 4-99, sparks unlimited creativity',
+    detailDescription: 'This LEGO Classic Creative Building Box is the perfect choice for fostering imagination and creativity. Contains 484 high-quality building blocks in classic bright colors like red, yellow, blue, and green. Suitable for ages 4-99, can build houses, vehicles, animals and various shapes. Blocks are made from eco-friendly ABS material, safe and non-toxic, with rounded corners that won\'t hurt hands. Comes with detailed building instructions while encouraging free creation.',
     price: 299.99,
     toyTypeId: 1
   },
   {
     id: 2,
-    name: '1000片拼图-世界名画',
-    description: '高品质纸质拼图，完成后可裱框装饰',
-    detailDescription: '精选世界著名画作设计的1000片拼图，采用高品质厚纸板制造，色彩还原度极高。每片拼图都经过精密切割，拼接紧密无缝。完成尺寸为70×50cm，完成后可作为艺术品装裱悬挂。拼图过程能有效锻炼观察力、耐心和专注力，是放松身心的绝佳选择。包装盒内附有参考图和拼图技巧指导。',
+    name: '1000-Piece Puzzle - World Famous Paintings',
+    description: 'High-quality paper puzzle, can be framed for decoration when completed',
+    detailDescription: '1000-piece puzzle featuring world-famous paintings, made from high-quality thick cardboard with excellent color reproduction. Each piece is precision-cut for tight, seamless fitting. Completed size is 70×50cm, perfect for framing as artwork when finished. The puzzle process effectively exercises observation, patience and concentration, making it an excellent choice for relaxation. Package includes reference image and puzzle solving tips.',
     price: 89.99,
     toyTypeId: 1
   },
   {
     id: 3,
-    name: '遥控四驱越野车',
-    description: '1:14比例，防水设计，最高时速25km/h',
-    detailDescription: '专业级遥控四驱越野车，采用1:14仿真比例设计。配备强劲的无刷电机，最高时速可达25km/h。车身采用防水设计，可在雨天或水坑中行驶。四轮独立悬挂系统，能够轻松应对各种复杂地形。2.4GHz遥控器，控制距离达100米，支持多台同时操控不干扰。电池续航时间25分钟，充电时间2小时。',
+    name: 'Remote Control 4WD Off-Road Vehicle',
+    description: '1:14 scale, waterproof design, top speed 25km/h',
+    detailDescription: 'Professional remote control 4WD off-road vehicle with realistic 1:14 scale design. Equipped with powerful brushless motor, top speed reaches 25km/h. Vehicle features waterproof design, can drive in rain or through puddles. Four-wheel independent suspension system easily handles various complex terrains. 2.4GHz remote controller with 100-meter control range, supports multiple simultaneous operation without interference. Battery life 25 minutes, charging time 2 hours.',
     price: 459.99,
     toyTypeId: 2
   },
   {
     id: 4,
-    name: '航拍无人机',
-    description: '4K高清摄像头，30分钟续航，适合入门者',
-    detailDescription: '入门级航拍无人机，配备4K超高清摄像头，支持实时图传和录像功能。采用GPS定位系统，具备一键返航、定点悬停等智能功能。30分钟超长续航，满足各种拍摄需求。机身轻巧便携，折叠后仅手掌大小。配备智能避障系统，安全性大大提升。操作简单，适合初学者入门使用。',
+    name: 'Aerial Photography Drone',
+    description: '4K HD camera, 30-minute battery life, suitable for beginners',
+    detailDescription: 'Entry-level aerial photography drone equipped with 4K ultra-high-definition camera, supports real-time image transmission and recording. Features GPS positioning system with one-key return, fixed-point hovering and other intelligent functions. 30-minute super long battery life meets various shooting needs. Lightweight and portable body, folds to palm size. Equipped with intelligent obstacle avoidance system for greatly improved safety. Simple operation, suitable for beginners.',
     price: 899.99,
     toyTypeId: 2
   },
   {
     id: 5,
-    name: '儿童滑板车',
-    description: '三轮设计，LED车轮，适合3-8岁儿童',
-    detailDescription: '专为3-8岁儿童设计的安全滑板车，采用前二后一的三轮稳定结构。车轮内置LED灯，滑行时自动发光，增加趣味性和夜间安全性。把手高度三档可调（65-85cm），伴随孩子成长。踏板采用防滑设计，宽大舒适。车身采用优质铝合金材料，轻便且耐用。配备后轮刹车系统，确保安全。承重可达50kg。',
+    name: 'Children\'s Scooter',
+    description: 'Three-wheel design, LED wheels, suitable for ages 3-8',
+    detailDescription: 'Safety scooter designed specifically for children ages 3-8, featuring a stable two-front-one-rear three-wheel structure. Wheels have built-in LED lights that automatically illuminate when riding, adding fun and nighttime safety. Handle height adjustable in three levels (65-85cm), grows with the child. Deck features anti-slip design, wide and comfortable. Body made from high-quality aluminum alloy, lightweight yet durable. Equipped with rear wheel brake system for safety. Weight capacity up to 50kg.',
     price: 189.99,
     toyTypeId: 3
   },
   {
     id: 6,
-    name: '户外秋千套装',
-    description: '承重100kg，安全绳索，适合花园安装',
-    detailDescription: '专业级户外秋千套装，采用优质橡木制作座椅，表面光滑无刺。配备高强度尼龙绳索，经过严格安全测试，承重可达100kg。绳索长度可调节（1.5-2.5米），适合不同安装高度。座椅设计符合人体工学，舒适安全。安装简单，配备详细说明书和安装工具。适合花园、公园等户外环境安装使用。',
+    name: 'Outdoor Swing Set',
+    description: 'Weight capacity 100kg, safety rope, suitable for garden installation',
+    detailDescription: 'Professional outdoor swing set with high-quality oak seat, smooth and splinter-free surface. Equipped with high-strength nylon rope that has passed strict safety testing, weight capacity up to 100kg. Rope length adjustable (1.5-2.5 meters), suitable for different installation heights. Seat design follows ergonomic principles, comfortable and safe. Easy installation with detailed instructions and installation tools included. Suitable for gardens, parks and other outdoor environments.',
     price: 329.99,
     toyTypeId: 3
   },
   {
     id: 7,
-    name: '毛绒泰迪熊',
-    description: '超软材质，35cm高，适合所有年龄段',
-    detailDescription: '经典泰迪熊毛绒玩具，采用顶级超柔短毛绒制作，手感细腻温暖。内部填充优质PP棉，饱满有弹性，抱感舒适。35cm的完美尺寸，适合拥抱和携带。五官采用刺绣工艺，安全无脱落风险。通过国际玩具安全标准认证，适合所有年龄段。经典棕色设计，是陪伴成长的最佳伙伴。可机洗，方便日常护理。',
+    name: 'Plush Teddy Bear',
+    description: 'Ultra-soft material, 35cm height, suitable for all ages',
+    detailDescription: 'Classic teddy bear plush toy made from premium ultra-soft short pile fur with delicate, warm texture. Internal filling of high-quality PP cotton, full and elastic with comfortable hugging feel. Perfect 35cm size, suitable for hugging and carrying. Facial features use embroidery craftsmanship with no risk of detachment. Passes international toy safety standards, suitable for all ages. Classic brown design, the best companion for growing up. Machine washable for easy daily care.',
     price: 79.99,
     toyTypeId: 4
   },
   {
     id: 8,
-    name: '芭比娃娃套装',
-    description: '包含娃娃和配件，可换装，培养想象力',
-    detailDescription: '时尚芭比娃娃套装，包含29cm高的芭比娃娃一个和丰富配件。配有5套不同风格的服装（休闲、正装、晚礼服、运动装、睡衣），10双精美鞋子，以及各种首饰配件。娃娃关节可活动，支持多种造型摆拍。头发可梳理造型，培养孩子的审美和创造力。所有配件均采用环保材料制作，安全无毒。是角色扮演和想象力游戏的完美选择。',
+    name: 'Barbie Doll Set',
+    description: 'Includes doll and accessories, changeable outfits, fosters imagination',
+    detailDescription: 'Fashion Barbie doll set includes one 29cm tall Barbie doll and rich accessories. Comes with 5 different style outfits (casual, formal, evening gown, sportswear, pajamas), 10 pairs of exquisite shoes, and various jewelry accessories. Doll joints are movable, supporting multiple poses for photography. Hair can be styled and arranged, fostering children\'s aesthetic sense and creativity. All accessories made from eco-friendly materials, safe and non-toxic. Perfect choice for role-playing and imagination games.',
     price: 129.99,
     toyTypeId: 4
   },  // toyTypeId: 1
   {
     id: 9,
-    name: '磁力片积木套装',
-    description: '120片磁力片，锻炼空间想象力',
-    detailDescription: '创新磁力片积木套装，包含120片不同形状的磁力积木。采用钕铁硼强磁设计，吸力强劲，连接稳固。包含正方形、三角形、半圆形等多种几何形状，有助于儿童学习几何知识。色彩丰富，有红、蓝、绿、黄等8种颜色。可搭建城堡、汽车、动物等立体造型，充分锻炼空间想象力和创造力。边角圆润，安全无害。',
+    name: 'Magnetic Building Tiles Set',
+    description: '120 magnetic tiles, develop spatial imagination',
+    detailDescription: 'Innovative magnetic building tiles set with 120 different shaped magnetic blocks. Features strong neodymium iron boron magnets for powerful attraction and stable connections. Includes squares, triangles, semicircles and other geometric shapes to help children learn geometry. Rich colors including red, blue, green, yellow and 4 other colors. Can build castles, cars, animals and other 3D structures, fully exercising spatial imagination and creativity. Rounded corners, safe and harmless.',
     price: 159.99,
     toyTypeId: 1
   },
   {
     id: 10,
-    name: '彩色木质拼图',
-    description: '环保木材，安全无毒，适合幼儿',
-    detailDescription: '精选优质榉木制作的儿童拼图，表面光滑无刺，边角圆润安全。采用环保水性漆涂装，无毒无味，符合儿童玩具安全标准。拼图图案设计丰富，包含动物、植物、交通工具等主题。色彩鲜艳，有助于培养色彩认知能力。拼图块大小适合小手抓握，锻炼手眼协调能力。每套包含6个不同难度的拼图，适合循序渐进学习。',
+    name: 'Colorful Wooden Puzzle',
+    description: 'Eco-friendly wood, safe and non-toxic, suitable for toddlers',
+    detailDescription: 'Children\'s puzzle made from premium beech wood with smooth, splinter-free surface and rounded safe corners. Uses eco-friendly water-based paint coating, non-toxic and odorless, meets children\'s toy safety standards. Rich puzzle designs including animals, plants, vehicles and other themes. Bright colors help develop color recognition abilities. Puzzle pieces sized for small hands to grasp, exercising hand-eye coordination. Each set includes 6 puzzles of different difficulty levels for progressive learning.',
     price: 49.99,
     toyTypeId: 1
   },
   {
     id: 11,
-    name: '数字认知积木',
-    description: '帮助儿童学习数字和颜色',
-    detailDescription: '专为学龄前儿童设计的数字认知积木，包含0-9数字积木各2套，共20块。每个数字都采用不同颜色，帮助建立数字与颜色的对应关系。积木表面印有相应数量的图案，直观展示数字含义。采用环保实木制作，手感温润，安全耐用。可进行数字排序、简单加减法等数学启蒙游戏。配有学习指导手册，指导家长进行科学早教。',
+    name: 'Number Recognition Building Blocks',
+    description: 'Help children learn numbers and colors',
+    detailDescription: 'Number recognition blocks designed for preschoolers, containing 2 sets each of numbers 0-9, totaling 20 blocks. Each number uses a different color to help establish number-color correspondence. Block surfaces feature corresponding quantity patterns for intuitive number understanding. Made from eco-friendly solid wood with warm texture, safe and durable. Can play number sequencing, simple addition and subtraction games for math enlightenment. Includes learning guide manual for scientific early education.',
     price: 39.99,
     toyTypeId: 1
   },
   {
     id: 12,
-    name: '动物拼插积木',
-    description: '多种动物造型，激发创造力',
-    detailDescription: '丰富多彩的动物主题拼插积木，包含20种不同动物的拼装模型。每个动物由6-15个积木块组成，难度适中。积木设计精巧，拼装后动物形象生动逼真。包含陆地动物（狮子、大象、长颈鹿等）、海洋动物（鲸鱼、海豚、章鱼等）和飞行动物（老鹰、蝴蝶、蜜蜂等）。通过拼装过程，儿童可以学习动物知识，培养观察力和动手能力。',
+    name: 'Animal Building Block Set',
+    description: 'Various animal shapes, spark creativity',
+    detailDescription: 'Colorful animal-themed building blocks with 20 different animal assembly models. Each animal consists of 6-15 blocks with moderate difficulty. Ingenious block design creates lifelike animal images when assembled. Includes land animals (lions, elephants, giraffes), marine animals (whales, dolphins, octopus) and flying animals (eagles, butterflies, bees). Through assembly process, children learn about animals while developing observation and hands-on skills.',
     price: 69.99,
     toyTypeId: 1
   },
   {
     id: 13,
-    name: '交通工具拼图',
-    description: '认识各种交通工具，提升认知',
-    detailDescription: '专业设计的交通工具主题拼图套装，包含12种不同交通工具的拼图。涵盖陆海空各种交通方式：汽车、火车、轮船、飞机、自行车、摩托车等。每个拼图由12-20片组成，适合3-6岁儿童。拼图完成后可以学习各种交通工具的特点和用途。采用厚纸板制作，不易变形，可反复使用。配有交通知识小册子，寓教于乐。',
+    name: 'Transportation Vehicle Puzzles',
+    description: 'Learn about various vehicles, enhance cognition',
+    detailDescription: 'Professionally designed transportation-themed puzzle set with 12 different vehicle puzzles. Covers land, sea and air transportation: cars, trains, ships, airplanes, bicycles, motorcycles, etc. Each puzzle consists of 12-20 pieces, suitable for children ages 3-6. After completing puzzles, children can learn about different vehicles\' characteristics and uses. Made from thick cardboard, resistant to deformation and reusable. Includes transportation knowledge booklet for educational fun.',
     price: 59.99,
     toyTypeId: 1
   },
   {
     id: 14,
-    name: '立体迷宫球',
-    description: '锻炼手眼协调能力',
-    detailDescription: '创新设计的3D立体迷宫球，直径15cm的透明球体内包含100个关卡的立体迷宫。通过转动球体，控制小钢球沿着轨道前进，避开障碍到达终点。迷宫设计巧妙，难度递增，从简单到复杂挑战不断升级。有效锻炼手眼协调能力、空间感知能力和专注力。球体采用高强度透明材料制作，安全耐摔。适合8岁以上儿童和成人，是益智娱乐的绝佳选择。',
+    name: '3D Maze Ball',
+    description: 'Exercise hand-eye coordination',
+    detailDescription: 'Innovative 3D maze ball design with 100 levels of 3D maze inside a 15cm diameter transparent sphere. Control steel ball along tracks by rotating the sphere, avoiding obstacles to reach the finish. Clever maze design with increasing difficulty from simple to complex, constantly upgrading challenges. Effectively exercises hand-eye coordination, spatial perception and concentration. Sphere made from high-strength transparent material, safe and drop-resistant. Suitable for children 8+ and adults, excellent choice for educational entertainment.',
     price: 89.99,
     toyTypeId: 1
   },  // toyTypeId: 2
   {
     id: 15,
-    name: '遥控坦克',
-    description: '仿真造型，360度旋转',
-    detailDescription: '1:24比例仿真军用坦克，外观细节逼真，配有可旋转炮塔和升降炮管。采用履带式行走系统，可适应多种地形。2.4GHz遥控系统，控制距离达50米，支持前进、后退、左转、右转、炮塔旋转等多种动作。内置LED灯光和音效系统，增强仿真体验。坚固的工程塑料外壳，耐撞击不易损坏。电池续航时间20分钟。',
+    name: 'Remote Control Tank',
+    description: 'Realistic design, 360-degree rotation',
+    detailDescription: '1:24 scale realistic military tank with authentic detailed appearance, featuring rotatable turret and elevating cannon. Uses track-based movement system suitable for various terrains. 2.4GHz remote control system with 50-meter control range, supports forward, backward, left turn, right turn, turret rotation and other actions. Built-in LED lights and sound effects system for enhanced realism. Sturdy engineering plastic shell, impact-resistant and durable. Battery life 20 minutes.',
     price: 299.99,
     toyTypeId: 2
   },
   {
     id: 16,
-    name: '遥控直升机',
-    description: '轻巧机身，易于操控',
-    detailDescription: '入门级遥控直升机，机身长度25cm，采用轻量化设计便于操控。配备陀螺仪稳定系统，飞行更平稳，适合初学者。2.4GHz遥控器，操作距离30米，支持上升、下降、前进、后退、左右转向等基本飞行动作。内置充电电池，续航时间8-10分钟，充电时间45分钟。机身采用抗摔材料，配有备用螺旋桨。',
+    name: 'Remote Control Helicopter',
+    description: 'Lightweight body, easy to control',
+    detailDescription: 'Entry-level remote control helicopter with 25cm body length and lightweight design for easy control. Equipped with gyroscope stabilization system for smoother flight, suitable for beginners. 2.4GHz remote controller with 30-meter operating distance, supports basic flight actions: ascent, descent, forward, backward, left and right turns. Built-in rechargeable battery with 8-10 minute flight time, 45-minute charging time. Body made from crash-resistant material with spare propellers included.',
     price: 199.99,
     toyTypeId: 2
   },
   {
     id: 17,
-    name: '遥控快艇',
-    description: '高速行驶，适合水上娱乐',
-    detailDescription: '高性能遥控快艇，船身长度35cm，采用流线型设计减少水阻。配备强劲水冷电机，最高速度达15km/h。防水等级IPX6，可在游泳池、湖泊等水域使用。2.4GHz遥控系统，控制距离60米，支持前进、后退、左右转向。配备自动翻正功能，即使倾覆也能自动恢复。电池续航25分钟，具有低电压保护功能。',
+    name: 'Remote Control Speedboat',
+    description: 'High-speed sailing, suitable for water entertainment',
+    detailDescription: 'High-performance remote control speedboat with 35cm streamlined hull design to reduce water resistance. Equipped with powerful water-cooled motor, top speed reaches 15km/h. IPX6 waterproof rating, suitable for use in swimming pools, lakes and other water areas. 2.4GHz remote control system with 60-meter control range, supports forward, backward, left and right steering. Features automatic righting function, can automatically recover even if capsized. Battery life 25 minutes with low voltage protection.',
     price: 249.99,
     toyTypeId: 2
   },
   {
     id: 18,
-    name: '遥控机器人',
-    description: '可编程，互动娱乐',
-    detailDescription: '智能遥控机器人，高度30cm，具有人性化外观设计。支持语音控制和手机APP编程，可学习简单指令和动作。配备LED表情显示屏，可显示不同情绪表情。具有行走、舞蹈、讲故事、唱歌等多种功能。内置传感器可避障和追踪，还可进行简单对话。充电式锂电池，续航时间2小时。适合8岁以上儿童，寓教于乐。',
+    name: 'Remote Control Robot',
+    description: 'Programmable, interactive entertainment',
+    detailDescription: 'Intelligent remote control robot, 30cm height with humanoid appearance design. Supports voice control and smartphone app programming, can learn simple commands and movements. Equipped with LED expression display showing different emotions. Features walking, dancing, storytelling, singing and other functions. Built-in sensors for obstacle avoidance and tracking, can engage in simple conversations. Rechargeable lithium battery with 2-hour runtime. Suitable for children 8+, educational and entertaining.',
     price: 399.99,
     toyTypeId: 2
   },
   {
     id: 19,
-    name: '遥控恐龙',
-    description: '仿真动作，发声灯光',
-    detailDescription: '栩栩如生的遥控霸王龙，长度40cm，采用仿真皮肤纹理设计。具有行走、咆哮、摆尾、张嘴等逼真动作，眼部配有LED灯光效果。内置多种恐龙叫声和背景音效，增强沉浸感。红外遥控系统，控制距离20米，操作简单。可进行演示模式自动表演。材质安全无毒，适合3岁以上儿童。电池续航30分钟，帮助孩子了解恐龙知识。',
+    name: 'Remote Control Dinosaur',
+    description: 'Realistic movements, sound and light effects',
+    detailDescription: 'Lifelike remote control T-Rex, 40cm length with realistic skin texture design. Features authentic movements: walking, roaring, tail wagging, mouth opening, with LED eye light effects. Built-in various dinosaur sounds and background sound effects for enhanced immersion. Infrared remote control system with 20-meter control range, simple operation. Can perform demonstration mode for automatic shows. Safe non-toxic materials, suitable for children 3+. Battery life 30 minutes, helps children learn about dinosaurs.',
     price: 179.99,
     toyTypeId: 2
   },
   {
     id: 20,
-    name: '遥控赛车',
-    description: '高速漂移，耐撞设计',
-    detailDescription: '专业级遥控漂移赛车，1:18比例，采用跑车外观设计。配备高性能电机，最高时速20km/h，支持360度漂移。四轮独立减震系统，适应各种路面。2.4GHz遥控器，控制精准，反应灵敏，控制距离80米。车身采用高强度ABS材料，耐撞击设计。配备前后LED车灯，夜间行驶更炫酷。电池续航30分钟，充电时间90分钟。',
+    name: 'Remote Control Racing Car',
+    description: 'High-speed drifting, crash-resistant design',
+    detailDescription: 'Professional remote control drift racing car in 1:18 scale with sports car appearance. Equipped with high-performance motor, top speed 20km/h, supports 360-degree drifting. Four-wheel independent shock absorption system adapts to various road surfaces. 2.4GHz remote controller with precise control and sensitive response, 80-meter control range. Body made from high-strength ABS material with impact-resistant design. Features front and rear LED lights for cool nighttime driving. Battery life 30 minutes, charging time 90 minutes.',
     price: 159.99,
     toyTypeId: 2
   },  // toyTypeId: 3
   {
     id: 21,
-    name: '儿童篮球架',
-    description: '高度可调，室内外皆可用',
-    detailDescription: '专业儿童篮球架套装，篮筐高度可在1.2-2.1米之间调节，适合不同年龄段儿童。采用优质PE材料制作，底座可注水增重确保稳定性。配有标准尺寸儿童篮球和打气筒。篮筐采用实心钢圈，配有全天候耐用篮网。可折叠设计，便于收纳和移动。适合室内外使用，帮助儿童锻炼身体协调性和投篮技巧。承重设计安全可靠。',
+    name: 'Children\'s Basketball Hoop',
+    description: 'Adjustable height, suitable for indoor and outdoor use',
+    detailDescription: 'Professional children\'s basketball hoop set with adjustable rim height from 1.2-2.1 meters, suitable for different age groups. Made from high-quality PE material with water-fillable base for stability. Includes standard-size children\'s basketball and air pump. Rim made from solid steel with all-weather durable net. Foldable design for easy storage and transport. Suitable for indoor and outdoor use, helps children exercise body coordination and shooting skills. Safe and reliable weight-bearing design.',
     price: 129.99,
     toyTypeId: 3
   },
   {
     id: 22,
-    name: '儿童帐篷',
-    description: '可折叠，适合户外露营',
-    detailDescription: '多功能儿童游戏帐篷，尺寸120×120×135cm，空间宽敞舒适。采用优质涤纶面料，防水防潮，适合户外使用。支架采用高强度玻璃纤维杆，轻便且坚固。帐篷设有两个窗户和一个门，通风良好，可观察外部环境。快速搭建设计，5分钟即可完成安装。配有收纳袋，便于携带。适合花园、海滩、公园等户外场所，也可作为室内游戏屋使用。',
+    name: 'Children\'s Tent',
+    description: 'Foldable, suitable for outdoor camping',
+    detailDescription: 'Multi-functional children\'s play tent, 120×120×135cm size with spacious and comfortable interior. Made from high-quality polyester fabric, waterproof and moisture-resistant, suitable for outdoor use. Frame uses high-strength fiberglass poles, lightweight yet sturdy. Tent features two windows and one door with good ventilation and external visibility. Quick setup design, can be assembled in 5 minutes. Includes storage bag for easy carrying. Suitable for gardens, beaches, parks and other outdoor locations, can also be used as indoor playhouse.',
     price: 99.99,
     toyTypeId: 3
   },
   {
     id: 23,
-    name: '沙滩玩具套装',
-    description: '多种工具，适合沙滩游戏',
-    detailDescription: '完整的沙滩玩具套装，包含12件不同工具：大小水桶各1个、铲子2把、耙子1把、筛子1个、城堡模具4个、小汽车模具2个。所有工具均采用优质ABS塑料制作，边角圆润安全，色彩鲜艳不褪色。铲子手柄符合儿童握持习惯，使用舒适。城堡模具设计精美，可制作不同造型的沙雕。配有网格收纳袋，便于清洗和携带。适合海滩、沙坑、公园等场所使用。',
+    name: 'Beach Toy Set',
+    description: 'Various tools, suitable for beach games',
+    detailDescription: 'Complete beach toy set with 12 different tools: large and small buckets, 2 shovels, 1 rake, 1 sieve, 4 castle molds, 2 car molds. All tools made from high-quality ABS plastic with rounded safe edges and bright fade-resistant colors. Shovel handles designed for children\'s grip, comfortable to use. Castle molds beautifully designed for creating different shaped sand sculptures. Includes mesh storage bag for easy cleaning and carrying. Suitable for beaches, sandboxes, parks and other locations.',
     price: 49.99,
     toyTypeId: 3
   },
   {
     id: 24,
-    name: '儿童飞盘',
-    description: '柔软材质，安全易投掷',
-    detailDescription: '专为儿童设计的安全飞盘，直径23cm，采用柔软的TPU材料制作，即使击中也不会造成伤害。重量仅85克，适合儿童投掷和接住。表面设有防滑纹理，增加握持感和飞行稳定性。鲜艳的彩虹色设计，容易在空中追踪。飞行距离可达20米，适合在公园、海滩、草坪等开阔场地使用。有助于锻炼手眼协调能力和反应速度，增进亲子互动。',
+    name: 'Children\'s Frisbee',
+    description: 'Soft material, safe and easy to throw',
+    detailDescription: 'Children\'s safety frisbee designed specifically for kids, 23cm diameter made from soft TPU material that won\'t cause injury even on impact. Weighs only 85 grams, suitable for children to throw and catch. Surface features anti-slip texture for enhanced grip and flight stability. Bright rainbow color design, easy to track in the air. Flight distance up to 20 meters, suitable for use in parks, beaches, lawns and other open spaces. Helps exercise hand-eye coordination and reaction speed, enhances parent-child interaction.',
     price: 19.99,
     toyTypeId: 3
   },
   {
     id: 25,
-    name: '儿童跳绳',
-    description: '防滑手柄，长度可调',
-    detailDescription: '专业儿童跳绳，绳长可在2-3米之间调节，适合不同身高的儿童。手柄采用防滑橡胶材质，握感舒适，不易滑脱。绳身采用高质量PVC材料，耐磨损，转动顺畅。手柄内置轴承设计，跳跃时更加流畅。配有跳绳计数器，可记录跳跃次数，增加运动趣味性。鲜艳的颜色搭配，激发儿童运动兴趣。是锻炼心肺功能和身体协调性的绝佳运动器材。',
+    name: 'Children\'s Jump Rope',
+    description: 'Anti-slip handles, adjustable length',
+    detailDescription: 'Professional children\'s jump rope with adjustable length from 2-3 meters, suitable for children of different heights. Handles made from anti-slip rubber material for comfortable grip without slipping. Rope body made from high-quality PVC material, wear-resistant with smooth rotation. Handles feature internal bearing design for smoother jumping. Includes jump counter to record jump count, adding fun to exercise. Bright color combination stimulates children\'s interest in sports. Excellent exercise equipment for cardiopulmonary function and body coordination.',
     price: 15.99,
     toyTypeId: 3
   },
   {
     id: 26,
-    name: '儿童足球',
-    description: '轻质材料，适合初学者',
-    detailDescription: '专为儿童设计的3号足球，周长58-60cm，重量仅280克，适合3-8岁儿童使用。采用优质PVC材料制作，表面柔软，踢击时脚感舒适。经典黑白配色设计，符合传统足球外观。气嘴采用丁基橡胶材质，密封性好，保气时间长。球面印有卡通图案，增加趣味性。适合在草地、人工草坪等软质地面使用，帮助儿童学习基本足球技巧，培养团队合作精神。',
+    name: 'Children\'s Soccer Ball',
+    description: 'Lightweight material, suitable for beginners',
+    detailDescription: 'Size 3 soccer ball designed for children, 58-60cm circumference, weighs only 280 grams, suitable for children ages 3-8. Made from high-quality PVC material with soft surface for comfortable foot feel when kicking. Classic black and white design following traditional soccer appearance. Valve made from butyl rubber with good sealing and long air retention. Ball surface features cartoon patterns for added fun. Suitable for use on grass, artificial turf and other soft surfaces, helps children learn basic soccer skills and develop teamwork spirit.',
     price: 29.99,
     toyTypeId: 3
   },  // toyTypeId: 4
   {
     id: 27,
-    name: '毛绒小兔子',
-    description: '柔软可爱，适合陪伴入睡',
-    detailDescription: '超可爱毛绒小兔子，高度25cm，采用顶级超柔短绒制作，手感如丝般顺滑。内部填充高品质PP棉，饱满有弹性，抱感极佳。兔子造型呆萌可爱，长耳朵设计特别讨喜。眼部采用安全塑料材质，不易脱落。粉色和白色相间的配色，温馨浪漫。适合作为睡眠伙伴，给孩子带来安全感。通过严格安全检测，可机洗，易于清洁保养。',
+    name: 'Plush Bunny',
+    description: 'Soft and cute, suitable for bedtime companionship',
+    detailDescription: 'Super cute plush bunny, 25cm height made from premium ultra-soft short pile fur with silk-smooth texture. Internal filling of high-quality PP cotton, full and elastic with excellent hugging feel. Adorable bunny design with especially endearing long ears. Eyes made from safe plastic material, secure attachment. Pink and white color scheme, warm and romantic. Suitable as sleep companion, providing children with sense of security. Passes strict safety testing, machine washable, easy to clean and maintain.',
     price: 59.99,
     toyTypeId: 4
   },
   {
     id: 28,
-    name: '毛绒小狗',
-    description: '仿真造型，手感细腻',
-    detailDescription: '逼真毛绒小狗玩具，按照真实拉布拉多犬1:2比例制作，长度30cm。采用仿真毛发技术，触感接近真实狗毛。眼部炯炯有神，鼻子采用安全橡胶材质。四肢可活动，支持多种造型摆放。内部骨架设计使其能够保持坐立姿态。毛色自然，棕色渐变效果逼真。是培养孩子爱心和责任感的理想伙伴，也适合成人收藏。',
+    name: 'Plush Puppy',
+    description: 'Realistic design, delicate texture',
+    detailDescription: 'Realistic plush puppy toy made in 1:2 scale of real Labrador, 30cm length. Uses realistic fur technology with texture close to real dog hair. Bright expressive eyes, nose made from safe rubber material. Movable limbs support various pose arrangements. Internal skeleton design allows sitting posture. Natural fur color with realistic brown gradient effect. Ideal companion for fostering children\'s love and responsibility, also suitable for adult collection.',
     price: 69.99,
     toyTypeId: 4
   },
   {
     id: 29,
-    name: '毛绒独角兽',
-    description: '梦幻造型，色彩鲜艳',
-    detailDescription: '梦幻独角兽毛绒玩具，高度28cm，采用彩虹色渐变设计。独角采用安全软胶材质，表面有珠光效果。鬃毛采用特殊工艺制作，柔软飘逸，触感极佳。翅膀部分可轻微摆动，增加互动性。身体采用雪白色超柔绒毛，星星点点的装饰增添梦幻感。是小女孩的最爱，能激发想象力和对美好事物的向往。符合国际玩具安全标准。',
+    name: 'Plush Unicorn',
+    description: 'Magical design, bright colors',
+    detailDescription: 'Magical unicorn plush toy, 28cm height with rainbow gradient design. Horn made from safe soft gel with pearl finish effect. Mane crafted with special technique, soft and flowing with excellent texture. Wings can gently sway, adding interactivity. Body features snow-white ultra-soft fur with starry decorations adding magical feel. Little girls\' favorite, sparks imagination and appreciation for beautiful things. Meets international toy safety standards.',
     price: 89.99,
     toyTypeId: 4
   },
   {
     id: 30,
-    name: '毛绒小熊猫',
-    description: '憨态可掬，适合收藏',
-    detailDescription: '呆萌熊猫毛绒玩具，严格按照真实熊猫比例缩小制作，高度22cm。经典黑白配色，眼圈、耳朵、四肢采用深黑色毛绒，身体为雪白色。毛质柔软细腻，不易掉毛。憨态可掬的表情让人爱不释手。内部填充环保PP棉，手感Q弹。适合各个年龄段，既是儿童玩伴，也是成人减压神器。中国国宝形象，具有特殊的文化意义和收藏价值。',
+    name: 'Plush Panda',
+    description: 'Adorably cute, suitable for collection',
+    detailDescription: 'Adorable panda plush toy strictly scaled down from real pandas, 22cm height. Classic black and white coloring with eye rings, ears, and limbs in deep black fur, body in snow white. Soft fine fur quality that doesn\'t shed. Endearingly cute expression that\'s irresistible. Internal eco-friendly PP cotton filling, bouncy texture. Suitable for all ages, both children\'s companion and adult stress reliever. Chinese national treasure image with special cultural significance and collectible value.',
     price: 79.99,
     toyTypeId: 4
   },
   {
     id: 31,
-    name: '公主娃娃',
-    description: '多套服饰，丰富配件',
-    detailDescription: '精美公主娃娃套装，娃娃高度32cm，采用环保PVC材质制作。头发可梳理造型，支持编辫子、扎马尾等多种发型。面部妆容精致，大眼睛炯炯有神。包含5套不同主题服装：晚礼服、休闲装、舞蹈服、睡衣、派对装。配有20多件精美配件：鞋子、包包、首饰、头饰等。四肢关节可活动，支持多种姿态摆放。是角色扮演游戏的最佳道具，培养女孩的时尚感和创造力。',
+    name: 'Princess Doll',
+    description: 'Multiple outfits, rich accessories',
+    detailDescription: 'Exquisite princess doll set with 32cm tall doll made from eco-friendly PVC material. Hair can be styled and arranged, supports braiding, ponytails and other hairstyles. Delicate facial makeup with bright expressive eyes. Includes 5 different themed outfits: evening gown, casual wear, dance costume, pajamas, party dress. Comes with 20+ exquisite accessories: shoes, bags, jewelry, hair accessories, etc. Movable doll joints support various poses. Perfect prop for role-playing games, fostering girls\' fashion sense and creativity.',
     price: 139.99,
     toyTypeId: 4
   },
   {
     id: 32,
-    name: '医生娃娃套装',
-    description: '角色扮演，培养关爱',
-    detailDescription: '专业医生角色扮演娃娃套装，包含医生娃娃和完整医疗器械。娃娃高度30cm，穿着白大褂，戴着听诊器，形象专业。配有18件仿真医疗器械：听诊器、体温计、注射器、血压计、手术刀、药瓶等。所有器械均采用安全材料制作，边角圆润。通过角色扮演游戏，可以消除孩子对医生的恐惧，培养关爱他人的品质，启发职业梦想。适合3岁以上儿童。',
+    name: 'Doctor Doll Set',
+    description: 'Role-playing, foster caring',
+    detailDescription: 'Professional doctor role-playing doll set including doctor doll and complete medical equipment. Doll is 30cm tall wearing white coat and stethoscope with professional appearance. Comes with 18 realistic medical instruments: stethoscope, thermometer, syringe, blood pressure monitor, scalpel, medicine bottles, etc. All instruments made from safe materials with rounded edges. Through role-playing games, can eliminate children\'s fear of doctors, foster caring for others, inspire career dreams. Suitable for children 3+.',
     price: 119.99,
     toyTypeId: 4
   }
@@ -264,21 +264,21 @@ let nextId = 33;
 
 export class MemoryToyRepository {
   /**
-   * 获取所有玩具
+   * Get all toys
    */
   static async findAll(): Promise<Toy[]> {
     return [...toysData];
   }
 
   /**
-   * 根据玩具类型 ID 获取玩具列表
+   * Get toys by toy type ID
    */
   static async findByToyTypeId(toyTypeId: number): Promise<Toy[]> {
     return toysData.filter(toy => toy.toyTypeId === toyTypeId);
   }
 
   /**
-   * 根据 ID 获取玩具
+   * Get toy by ID
    */
   static async findById(id: number): Promise<Toy | null> {
     const toy = toysData.find(t => t.id === id);
