@@ -23,13 +23,13 @@ export default defineConfig({
     baseURL: 'http://localhost:3001',
     
     /* 在失败时收集追踪信息 */
-    trace: 'on-first-retry',
+    trace: 'off',
     
     /* 截图设置 */
-    screenshot: 'only-on-failure',
+    screenshot: 'off',
     
     /* 视频录制 */
-    video: 'retain-on-failure',
+    video: 'off',
     
     /* 浏览器上下文配置 */
     viewport: { width: 1280, height: 720 },
@@ -48,6 +48,8 @@ export default defineConfig({
           // 在测试时显示浏览器窗口（调试用）
           // headless: false,
           // slowMo: 1000,
+          // 使用系统安装的Chrome浏览器
+          executablePath: '/usr/bin/google-chrome',
         },
       },
     },
@@ -69,14 +71,14 @@ export default defineConfig({
       command: 'npm run dev',
       cwd: './backend',
       port: 3000,
-      reuseExistingServer: !process.env.CI,
+      reuseExistingServer: true,
       timeout: 120 * 1000,
     },
     {
       command: 'npm run dev',
       cwd: './frontend',
       port: 3001,
-      reuseExistingServer: !process.env.CI,
+      reuseExistingServer: true,
       timeout: 120 * 1000,
     },
   ],
