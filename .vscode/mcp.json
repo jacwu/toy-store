@@ -1,0 +1,14 @@
+{
+    "servers": {
+            "playwright": {
+                "command": "cmd",
+                "args": [
+                    "/c",
+                    "npx",
+                    "-y",
+                    "@executeautomation/playwright-mcp-server"
+                ],
+                "env": {}
+            }
+    }
+}

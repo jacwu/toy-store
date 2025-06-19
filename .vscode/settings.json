@@ -1,0 +1,17 @@
+{
+    "git.autofetch": true,
+    "chat.mcp.discovery.enabled": true,
+    "github.copilot.renameSuggestions.triggerAutomatically": true,
+    "github.copilot.selectedCompletionModel": "gpt-4o-copilot",
+    "github.copilot.nextEditSuggestions.enabled": true,
+    "chat.promptFiles": true,
+    "extensions.ignoreRecommendations": true,
+    "github.copilot.chat.agent.thinkingTool": true,
+    "chat.tools.autoApprove": true,
+    "chat.edits2.enabled": true,
+    "chat.agent.enabled": true,
+    "chat.agent.maxRequests": 100,
+    "github.copilot.nextEditSuggestions.fixes": true,
+    "github.copilot.chat.notebook.followCellExecution.enabled": true,
+    "github.copilot.advanced": {}
+}
