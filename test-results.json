@@ -1,0 +1,517 @@
+{
+  "config": {
+    "configFile": "/home/runner/work/toy-store/toy-store/playwright.config.ts",
+    "rootDir": "/home/runner/work/toy-store/toy-store/tests",
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "ci": {
+        "commitHref": "https://github.com/jacwu/toy-store/commit/6ab4f192f6bba6745fc35e6b7175180aee79ed78",
+        "commitHash": "6ab4f192f6bba6745fc35e6b7175180aee79ed78",
+        "buildHref": "https://github.com/jacwu/toy-store/actions/runs/15652104032"
+      },
+      "gitCommit": {
+        "shortHash": "6ab4f19",
+        "hash": "6ab4f192f6bba6745fc35e6b7175180aee79ed78",
+        "subject": "Initial plan for issue",
+        "body": "Initial plan for issue",
+        "author": {
+          "name": "copilot-swe-agent[bot]",
+          "email": "198982749+Copilot@users.noreply.github.com",
+          "time": 1749904698000
+        },
+        "committer": {
+          "name": "copilot-swe-agent[bot]",
+          "email": "198982749+Copilot@users.noreply.github.com",
+          "time": 1749904698000
+        },
+        "branch": "copilot/fix-35"
+      },
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "reporter": [
+      [
+        "html",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "test-results.json"
+        }
+      ],
+      [
+        "list",
+        null
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "quiet": false,
+    "projects": [
+      {
+        "outputDir": "/home/runner/work/toy-store/toy-store/test-results",
+        "repeatEach": 1,
+        "retries": 2,
+        "metadata": {
+          "ci": {
+            "commitHref": "https://github.com/jacwu/toy-store/commit/6ab4f192f6bba6745fc35e6b7175180aee79ed78",
+            "commitHash": "6ab4f192f6bba6745fc35e6b7175180aee79ed78",
+            "buildHref": "https://github.com/jacwu/toy-store/actions/runs/15652104032"
+          },
+          "gitCommit": {
+            "shortHash": "6ab4f19",
+            "hash": "6ab4f192f6bba6745fc35e6b7175180aee79ed78",
+            "subject": "Initial plan for issue",
+            "body": "Initial plan for issue",
+            "author": {
+              "name": "copilot-swe-agent[bot]",
+              "email": "198982749+Copilot@users.noreply.github.com",
+              "time": 1749904698000
+            },
+            "committer": {
+              "name": "copilot-swe-agent[bot]",
+              "email": "198982749+Copilot@users.noreply.github.com",
+              "time": 1749904698000
+            },
+            "branch": "copilot/fix-35"
+          },
+          "actualWorkers": 1
+        },
+        "id": "chromium",
+        "name": "chromium",
+        "testDir": "/home/runner/work/toy-store/toy-store/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      }
+    ],
+    "shard": null,
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.53.0",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "user-story-add-toy.spec.ts",
+      "file": "user-story-add-toy.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "用户故事：选择商品流程",
+          "file": "user-story-add-toy.spec.ts",
+          "line": 8,
+          "column": 6,
+          "specs": [
+            {
+              "title": "完整流程：登录 -> 浏览商品 -> 添加到购物车",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "timedOut",
+                      "duration": 30123,
+                      "error": {
+                        "message": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m",
+                        "stack": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+                      },
+                      "errors": [
+                        {
+                          "message": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+                        },
+                        {
+                          "location": {
+                            "file": "/home/runner/work/toy-store/toy-store/tests/user-story-add-toy.spec.ts",
+                            "column": 31,
+                            "line": 77
+                          },
+                          "message": "Error: locator.click: Test timeout of 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('a, button, [onclick]').filter({ hasText: '¥' }).first()\u001b[22m\n\n\n  75 |     // 寻找第一个可点击的玩具相关元素\n  76 |     const clickableToyElement = page.locator('a, button, [onclick]').filter({ hasText: '¥' }).first();\n> 77 |     await clickableToyElement.click();\n     |                               ^\n  78 |     \n  79 |     // 验证跳转到详情页\n  80 |     await expect(page).toHaveURL(/.*\\/toys\\/\\d+/);\n    at /home/runner/work/toy-store/toy-store/tests/user-story-add-toy.spec.ts:77:31"
+                        }
+                      ],
+                      "stdout": [
+                        {
+                          "text": "📋 步骤 1: 访问网站主页\n"
+                        },
+                        {
+                          "text": "📋 步骤 2: 检查是否需要退出\n"
+                        },
+                        {
+                          "text": "ℹ️ 未找到退出按钮，用户可能未登录\n"
+                        },
+                        {
+                          "text": "📋 步骤 3: 点击登录按钮\n"
+                        },
+                        {
+                          "text": "📋 步骤 4: 填写登录信息\n"
+                        },
+                        {
+                          "text": "📋 步骤 5: 验证登录成功并跳转主页\n"
+                        },
+                        {
+                          "text": "✅ 登录成功\n"
+                        },
+                        {
+                          "text": "📋 步骤 6: 验证玩具分类显示\n"
+                        },
+                        {
+                          "text": "✅ 找到分类: 全部\n"
+                        },
+                        {
+                          "text": "✅ 找到分类: 益智玩具\n"
+                        },
+                        {
+                          "text": "✅ 找到分类: 遥控玩具\n"
+                        },
+                        {
+                          "text": "✅ 找到分类: 户外玩具\n"
+                        },
+                        {
+                          "text": "✅ 找到分类: 玩偶玩具\n"
+                        },
+                        {
+                          "text": "📋 步骤 7: 验证玩具卡片信息\n"
+                        },
+                        {
+                          "text": "✅ 找到玩具卡片\n"
+                        },
+                        {
+                          "text": "📋 步骤 8: 点击玩具卡片跳转详情页\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-06-14T12:56:22.792Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/home/runner/work/toy-store/toy-store/test-results/user-story-add-toy-用户故事：选择商品流程-完整流程：登录---浏览商品---添加到购物车-chromium/error-context.md"
+                        }
+                      ]
+                    },
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "timedOut",
+                      "duration": 30039,
+                      "error": {
+                        "message": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m",
+                        "stack": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+                      },
+                      "errors": [
+                        {
+                          "message": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+                        },
+                        {
+                          "location": {
+                            "file": "/home/runner/work/toy-store/toy-store/tests/user-story-add-toy.spec.ts",
+                            "column": 31,
+                            "line": 77
+                          },
+                          "message": "Error: locator.click: Test timeout of 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('a, button, [onclick]').filter({ hasText: '¥' }).first()\u001b[22m\n\n\n  75 |     // 寻找第一个可点击的玩具相关元素\n  76 |     const clickableToyElement = page.locator('a, button, [onclick]').filter({ hasText: '¥' }).first();\n> 77 |     await clickableToyElement.click();\n     |                               ^\n  78 |     \n  79 |     // 验证跳转到详情页\n  80 |     await expect(page).toHaveURL(/.*\\/toys\\/\\d+/);\n    at /home/runner/work/toy-store/toy-store/tests/user-story-add-toy.spec.ts:77:31"
+                        }
+                      ],
+                      "stdout": [
+                        {
+                          "text": "📋 步骤 1: 访问网站主页\n"
+                        },
+                        {
+                          "text": "📋 步骤 2: 检查是否需要退出\n"
+                        },
+                        {
+                          "text": "ℹ️ 未找到退出按钮，用户可能未登录\n"
+                        },
+                        {
+                          "text": "📋 步骤 3: 点击登录按钮\n"
+                        },
+                        {
+                          "text": "📋 步骤 4: 填写登录信息\n"
+                        },
+                        {
+                          "text": "📋 步骤 5: 验证登录成功并跳转主页\n"
+                        },
+                        {
+                          "text": "✅ 登录成功\n"
+                        },
+                        {
+                          "text": "📋 步骤 6: 验证玩具分类显示\n"
+                        },
+                        {
+                          "text": "✅ 找到分类: 全部\n"
+                        },
+                        {
+                          "text": "✅ 找到分类: 益智玩具\n"
+                        },
+                        {
+                          "text": "✅ 找到分类: 遥控玩具\n"
+                        },
+                        {
+                          "text": "✅ 找到分类: 户外玩具\n"
+                        },
+                        {
+                          "text": "✅ 找到分类: 玩偶玩具\n"
+                        },
+                        {
+                          "text": "📋 步骤 7: 验证玩具卡片信息\n"
+                        },
+                        {
+                          "text": "✅ 找到玩具卡片\n"
+                        },
+                        {
+                          "text": "📋 步骤 8: 点击玩具卡片跳转详情页\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 1,
+                      "startTime": "2025-06-14T12:56:53.678Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/home/runner/work/toy-store/toy-store/test-results/user-story-add-toy-用户故事：选择商品流程-完整流程：登录---浏览商品---添加到购物车-chromium-retry1/error-context.md"
+                        }
+                      ]
+                    },
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 0,
+                      "status": "timedOut",
+                      "duration": 30039,
+                      "error": {
+                        "message": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m",
+                        "stack": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+                      },
+                      "errors": [
+                        {
+                          "message": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+                        },
+                        {
+                          "location": {
+                            "file": "/home/runner/work/toy-store/toy-store/tests/user-story-add-toy.spec.ts",
+                            "column": 31,
+                            "line": 77
+                          },
+                          "message": "Error: locator.click: Test timeout of 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('a, button, [onclick]').filter({ hasText: '¥' }).first()\u001b[22m\n\n\n  75 |     // 寻找第一个可点击的玩具相关元素\n  76 |     const clickableToyElement = page.locator('a, button, [onclick]').filter({ hasText: '¥' }).first();\n> 77 |     await clickableToyElement.click();\n     |                               ^\n  78 |     \n  79 |     // 验证跳转到详情页\n  80 |     await expect(page).toHaveURL(/.*\\/toys\\/\\d+/);\n    at /home/runner/work/toy-store/toy-store/tests/user-story-add-toy.spec.ts:77:31"
+                        }
+                      ],
+                      "stdout": [
+                        {
+                          "text": "📋 步骤 1: 访问网站主页\n"
+                        },
+                        {
+                          "text": "📋 步骤 2: 检查是否需要退出\n"
+                        },
+                        {
+                          "text": "ℹ️ 未找到退出按钮，用户可能未登录\n"
+                        },
+                        {
+                          "text": "📋 步骤 3: 点击登录按钮\n"
+                        },
+                        {
+                          "text": "📋 步骤 4: 填写登录信息\n"
+                        },
+                        {
+                          "text": "📋 步骤 5: 验证登录成功并跳转主页\n"
+                        },
+                        {
+                          "text": "✅ 登录成功\n"
+                        },
+                        {
+                          "text": "📋 步骤 6: 验证玩具分类显示\n"
+                        },
+                        {
+                          "text": "✅ 找到分类: 全部\n"
+                        },
+                        {
+                          "text": "✅ 找到分类: 益智玩具\n"
+                        },
+                        {
+                          "text": "✅ 找到分类: 遥控玩具\n"
+                        },
+                        {
+                          "text": "✅ 找到分类: 户外玩具\n"
+                        },
+                        {
+                          "text": "✅ 找到分类: 玩偶玩具\n"
+                        },
+                        {
+                          "text": "📋 步骤 7: 验证玩具卡片信息\n"
+                        },
+                        {
+                          "text": "✅ 找到玩具卡片\n"
+                        },
+                        {
+                          "text": "📋 步骤 8: 点击玩具卡片跳转详情页\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 2,
+                      "startTime": "2025-06-14T12:57:24.504Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/home/runner/work/toy-store/toy-store/test-results/user-story-add-toy-用户故事：选择商品流程-完整流程：登录---浏览商品---添加到购物车-chromium-retry2/error-context.md"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "9fe25ac12bb282944647-cfbe111ed13bdd93beda",
+              "file": "user-story-add-toy.spec.ts",
+              "line": 10,
+              "column": 7
+            },
+            {
+              "title": "验证分类过滤功能",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 3,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 5349,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "📋 测试玩具分类过滤功能\n"
+                        },
+                        {
+                          "text": "🔍 测试分类: 益智玩具\n"
+                        },
+                        {
+                          "text": "✅ 益智玩具 分类按钮可正常点击\n"
+                        },
+                        {
+                          "text": "🔍 测试分类: 遥控玩具\n"
+                        },
+                        {
+                          "text": "✅ 遥控玩具 分类按钮可正常点击\n"
+                        },
+                        {
+                          "text": "🔍 测试分类: 户外玩具\n"
+                        },
+                        {
+                          "text": "✅ 户外玩具 分类按钮可正常点击\n"
+                        },
+                        {
+                          "text": "🔍 测试分类: 玩偶玩具\n"
+                        },
+                        {
+                          "text": "✅ 玩偶玩具 分类按钮可正常点击\n"
+                        },
+                        {
+                          "text": "🔍 测试分类: 全部\n"
+                        },
+                        {
+                          "text": "✅ 全部 分类按钮可正常点击\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-06-14T12:57:55.311Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "9fe25ac12bb282944647-9ac6d62d3ba71fa6fadb",
+              "file": "user-story-add-toy.spec.ts",
+              "line": 111,
+              "column": 7
+            },
+            {
+              "title": "验证玩具详情页面内容",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 3,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 3561,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "📋 测试玩具详情页面\n"
+                        },
+                        {
+                          "text": "✅ 加入购物车按钮存在\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-06-14T12:58:00.841Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "9fe25ac12bb282944647-7e32221bdb96c03ee21c",
+              "file": "user-story-add-toy.spec.ts",
+              "line": 136,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2025-06-14T12:56:22.242Z",
+    "duration": 102251.62700000001,
+    "expected": 2,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  }
+}
