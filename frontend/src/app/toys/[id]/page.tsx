@@ -359,7 +359,7 @@ export default function ToyDetailPage() {
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
               >
-                加入购物车
+                Add to Cart
               </AddToCartButton>
               
               <AddToCartButton

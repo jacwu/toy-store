@@ -211,7 +211,7 @@ export default function OrdersPage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-          我的订单
+          My Orders
         </PageTitle>
         <EmptyOrdersMessage
           initial={{ opacity: 0, scale: 0.9 }}
@@ -219,7 +219,7 @@ export default function OrdersPage() {
           transition={{ duration: 0.5 }}
         >
           <EmptyOrdersIcon>📋</EmptyOrdersIcon>
-          <EmptyOrdersText>您还没有任何订单</EmptyOrdersText>
+          <EmptyOrdersText>You don&apos;t have any orders yet</EmptyOrdersText>
           <Link href="/" passHref>
             <ContinueShoppingButton
               whileHover={{ scale: 1.05 }}
@@ -240,7 +240,7 @@ export default function OrdersPage() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
       >
-        我的订单
+        My Orders
       </PageTitle>
 
       <motion.div
@@ -258,7 +258,7 @@ export default function OrdersPage() {
                 whileHover={{ y: -2 }}
               >
                 <OrderHeader>
-                  <OrderId>订单号: {order.id}</OrderId>
+                  <OrderId>Order ID: {order.id}</OrderId>
                   <OrderDate>{formatDate(order.timestamp)}</OrderDate>
                 </OrderHeader>
 

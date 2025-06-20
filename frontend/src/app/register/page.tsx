@@ -19,7 +19,7 @@ export default function RegisterPage() {
     setSuccessMessage(null);
 
     if (!username.trim() || !password.trim()) {
-      setError('用户名和密码不能为空。');
+      setError('Username and password cannot be empty.');
       setIsLoading(false);
       return;
     }
@@ -28,20 +28,20 @@ export default function RegisterPage() {
       const responseData = await userApi.registerUser(username, password);
 
       if (responseData.success) {
-        setSuccessMessage(responseData.message || '注册成功！您现在可以登录。');
+        setSuccessMessage(responseData.message || 'Registration successful! You can now login.');
         setUsername('');
         setPassword('');
         // Optionally redirect after a delay:
         // setTimeout(() => router.push('/login'), 2000); 
       } else {
         // This path might be taken if the API returns a 2xx status but with success: false
-        setError(responseData.message || '发生意外错误。');
+        setError(responseData.message || 'Unexpected error occurred.');
       }
     } catch (err: any) { // Errors thrown by userApi (e.g., network error, 4xx/5xx responses)
       if (err && err.message) { // err.message should contain the backend's error message
         setError(err.message);
       } else {
-        setError('注册失败。请重试。');
+        setError('Registration failed. Please try again.');
       }
     } finally {
       setIsLoading(false);
@@ -50,29 +50,29 @@ export default function RegisterPage() {
 
   return (
     <div style={{ maxWidth: '400px', margin: '50px auto', padding: '20px', border: '1px solid #ccc', borderRadius: '8px' }}>
-      <h1 style={{ textAlign: 'center', marginBottom: '20px' }}>用户注册</h1>
+      <h1 style={{ textAlign: 'center', marginBottom: '20px' }}>User Registration</h1>
       <form onSubmit={handleSubmit}>
         <div style={{ marginBottom: '15px' }}>
-          <label htmlFor="username" style={{ display: 'block', marginBottom: '5px' }}>用户名:</label>
+          <label htmlFor="username" style={{ display: 'block', marginBottom: '5px' }}>Username:</label>
           <input
             id="username"
             type="text"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
-            placeholder="请输入用户名"
+            placeholder="Please enter username"
             required
             disabled={isLoading}
             style={{ width: '100%', padding: '10px', borderRadius: '4px', border: '1px solid #ddd' }}
           />
         </div>
         <div style={{ marginBottom: '20px' }}>
-          <label htmlFor="password" style={{ display: 'block', marginBottom: '5px' }}>密码:</label>
+          <label htmlFor="password" style={{ display: 'block', marginBottom: '5px' }}>Password:</label>
           <input
             id="password"
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            placeholder="请输入密码"
+            placeholder="Please enter password"
             required
             disabled={isLoading}
             style={{ width: '100%', padding: '10px', borderRadius: '4px', border: '1px solid #ddd' }}
@@ -85,7 +85,7 @@ export default function RegisterPage() {
           disabled={isLoading}
           style={{ width: '100%', padding: '10px 15px', backgroundColor: isLoading ? '#ccc' : '#007bff', color: 'white', border: 'none', borderRadius: '4px', cursor: 'pointer' }}
         >
-          {isLoading ? '注册中...' : '注册'}
+          {isLoading ? 'Registering...' : 'Register'}
         </button>
       </form>
     </div>

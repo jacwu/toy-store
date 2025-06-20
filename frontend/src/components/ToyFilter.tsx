@@ -90,19 +90,19 @@ export default function ToyFilter({
     >
       <SearchInput
         type="text"
-        placeholder="搜索玩具..."
+        placeholder="Search toys..."
         value={searchQuery}
         onChange={(e) => onSearchChange(e.target.value)}
       />
       
-      <FilterTitle>按类型筛选</FilterTitle>      <FilterOptions>
+      <FilterTitle>Filter by Category</FilterTitle>      <FilterOptions>
         <FilterButton
           data-active={selectedTypeId === null}
           onClick={() => onTypeSelect(null)}
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >
-          全部
+          All
         </FilterButton>
         {Array.isArray(toyTypes) && toyTypes.map((type) => (
           <FilterButton

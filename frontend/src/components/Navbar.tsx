@@ -120,7 +120,7 @@ export default function Navbar() {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            🧸 玩具商店
+            🧸 Toy Store
           </Logo>
         </Link>
 
@@ -130,7 +130,7 @@ export default function Navbar() {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              首页
+              Home
             </NavLink>
           </Link>
           <Link href="/about" passHref>
@@ -138,7 +138,7 @@ export default function Navbar() {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              关于我们
+              About Us
             </NavLink>
           </Link>
           <Link href="/orders" passHref>
@@ -146,7 +146,7 @@ export default function Navbar() {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              我的订单
+              My Orders
             </NavLink>
           </Link>
 
@@ -157,7 +157,7 @@ export default function Navbar() {
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.2 }}
               >
-                欢迎, {user.username}
+                Welcome, {user.username}
               </WelcomeText>
               <NavButton
                 onClick={handleLogout} // Uses context's logout
@@ -167,7 +167,7 @@ export default function Navbar() {
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.3 }}
               >
-                退出
+                Logout
               </NavButton>
             </>
           ) : !isLoading && !isLoggedIn ? (
@@ -180,7 +180,7 @@ export default function Navbar() {
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.2 }}
                 >
-                  登录
+                  Login
                 </NavLink>
               </Link>
               <Link href="/register" passHref>
@@ -191,7 +191,7 @@ export default function Navbar() {
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.3 }}
                 >
-                  注册
+                  Register
                 </NavLink>
               </Link>
             </>
@@ -202,7 +202,7 @@ export default function Navbar() {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              购物车 ({itemCount})
+              Cart ({itemCount})
             </CartButton>
           </Link>
 

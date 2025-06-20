@@ -122,7 +122,7 @@ export default function HomePage() {
       setToyTypes(Array.isArray(toyTypesData) ? toyTypesData : []);
     } catch (err) {
       console.error('Error loading data:', err);
-      setError('加载数据失败，请稍后重试');
+      setError('Failed to load data, please try again later');
       // 设置默认空数组
       setToys([]);
       setToyTypes([]);
@@ -195,7 +195,7 @@ export default function HomePage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          欢迎来到玩具商店
+          Welcome to Toy Store
         </HeroTitle>
         <HeroSubtitle
           initial={{ opacity: 0, y: -30 }}
@@ -213,7 +213,7 @@ export default function HomePage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
           >
-            你好, {user.username}! 欢迎回到玩具商店。
+            Hello, {user.username}! Welcome back to Toy Store.
           </HeroSubtitle>
         ) : !isAuthLoading && !isLoggedIn ? (
           <HeroSubtitle
@@ -222,7 +222,7 @@ export default function HomePage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            发现各种精彩有趣的玩具，从益智玩具到遥控玩具，为您的孩子带来无尽的乐趣和学习体验
+            Discover exciting toys, from educational puzzles to remote control vehicles, bringing endless fun and learning experiences to your children
           </HeroSubtitle>
         ) : null } {/* Or a placeholder/spinner if isAuthLoading */}
       </Hero>
@@ -272,12 +272,12 @@ export default function HomePage() {
           >
             <EmptyStateIcon>🔍</EmptyStateIcon>
             <EmptyStateText>
-              {searchQuery || selectedTypeId !== null ? '未找到匹配的玩具' : '暂无玩具'}
+              {searchQuery || selectedTypeId !== null ? 'No matching toys found' : 'No toys available'}
             </EmptyStateText>
             <EmptyStateSubtext>
               {searchQuery || selectedTypeId !== null
-                ? '请尝试调整筛选条件或搜索关键词'
-                : '请稍后再来查看'}
+                ? 'Please try adjusting the filters or search keywords'
+                : 'Please check back later'}
             </EmptyStateSubtext>
           </EmptyState>
         )}
