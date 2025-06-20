@@ -1,0 +1,120 @@
+{
+  "config": {
+    "configFile": "/home/runner/work/toy-store/toy-store/playwright.config.ts",
+    "rootDir": "/home/runner/work/toy-store/toy-store/tests",
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "ci": {
+        "commitHref": "https://github.com/jacwu/toy-store/commit/71f9c334e22b00788ace0676492415911705dbd5",
+        "commitHash": "71f9c334e22b00788ace0676492415911705dbd5",
+        "buildHref": "https://github.com/jacwu/toy-store/actions/runs/15770667415"
+      },
+      "gitCommit": {
+        "shortHash": "99bb040",
+        "hash": "99bb040366c5d01f411a9ad0ee7f1b31c68fd71b",
+        "subject": "Implement user message page with backend and frontend functionality",
+        "body": "Implement user message page with backend and frontend functionality\n\nCo-authored-by: jacwu <16080993+jacwu@users.noreply.github.com>\n",
+        "author": {
+          "name": "copilot-swe-agent[bot]",
+          "email": "198982749+Copilot@users.noreply.github.com",
+          "time": 1750391440000
+        },
+        "committer": {
+          "name": "copilot-swe-agent[bot]",
+          "email": "198982749+Copilot@users.noreply.github.com",
+          "time": 1750391440000
+        },
+        "branch": "copilot/fix-37"
+      }
+    },
+    "preserveOutput": "always",
+    "reporter": [
+      [
+        "html",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "test-results.json"
+        }
+      ],
+      [
+        "list",
+        null
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "quiet": false,
+    "projects": [
+      {
+        "outputDir": "/home/runner/work/toy-store/toy-store/test-results",
+        "repeatEach": 1,
+        "retries": 2,
+        "metadata": {
+          "ci": {
+            "commitHref": "https://github.com/jacwu/toy-store/commit/71f9c334e22b00788ace0676492415911705dbd5",
+            "commitHash": "71f9c334e22b00788ace0676492415911705dbd5",
+            "buildHref": "https://github.com/jacwu/toy-store/actions/runs/15770667415"
+          },
+          "gitCommit": {
+            "shortHash": "99bb040",
+            "hash": "99bb040366c5d01f411a9ad0ee7f1b31c68fd71b",
+            "subject": "Implement user message page with backend and frontend functionality",
+            "body": "Implement user message page with backend and frontend functionality\n\nCo-authored-by: jacwu <16080993+jacwu@users.noreply.github.com>\n",
+            "author": {
+              "name": "copilot-swe-agent[bot]",
+              "email": "198982749+Copilot@users.noreply.github.com",
+              "time": 1750391440000
+            },
+            "committer": {
+              "name": "copilot-swe-agent[bot]",
+              "email": "198982749+Copilot@users.noreply.github.com",
+              "time": 1750391440000
+            },
+            "branch": "copilot/fix-37"
+          }
+        },
+        "id": "chromium",
+        "name": "chromium",
+        "testDir": "/home/runner/work/toy-store/toy-store/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      }
+    ],
+    "shard": null,
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.53.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [],
+  "errors": [
+    {
+      "message": "Error: http://localhost:3000 is already used, make sure that nothing is running on the port/url or set reuseExistingServer:true in config.webServer.",
+      "stack": "Error: http://localhost:3000 is already used, make sure that nothing is running on the port/url or set reuseExistingServer:true in config.webServer."
+    }
+  ],
+  "stats": {
+    "startTime": "2025-06-20T03:51:49.519Z",
+    "duration": 16.883000000000038,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}
