@@ -43,3 +43,18 @@ export interface Order {
   totalAmount: number;
   itemCount: number;
 }
+
+export interface Message {
+  id: number;
+  title: string;
+  content: string;
+  userId: number;
+  username: string;
+  createdAt: string;
+}
+
+export interface CreateMessageRequest {
+  title: string;
+  content: string;
+  userId: number;
+}

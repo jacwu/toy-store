@@ -107,4 +107,49 @@ export const userApi = {
   },
 };
 
+export const messageApi = {
+  getAllMessages: async (): Promise<any> => {
+    try {
+      const response = await apiClient.get('/api/messages');
+      return response.data;
+    } catch (error) {
+      console.error('Error fetching messages:', error);
+      throw error;
+    }
+  },
+
+  getMessageById: async (id: number): Promise<any> => {
+    try {
+      const response = await apiClient.get(`/api/messages/${id}`);
+      return response.data;
+    } catch (error) {
+      console.error(`Error fetching message ${id}:`, error);
+      throw error;
+    }
+  },
+
+  createMessage: async (title: string, content: string, userId: number): Promise<any> => {
+    try {
+      const response = await apiClient.post('/api/messages', { title, content, userId });
+      return response.data;
+    } catch (error) {
+      console.error('Error creating message:', error);
+      if (axios.isAxiosError(error) && error.response) {
+        throw error.response.data || error;
+      }
+      throw error;
+    }
+  },
+
+  deleteMessage: async (id: number): Promise<any> => {
+    try {
+      const response = await apiClient.delete(`/api/messages/${id}`);
+      return response.data;
+    } catch (error) {
+      console.error(`Error deleting message ${id}:`, error);
+      throw error;
+    }
+  },
+};
+
 export default apiClient;
