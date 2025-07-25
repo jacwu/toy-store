@@ -9,8 +9,8 @@ export interface Toy {
     id: number;
     name: string;
     description: string;
-    icon?: string;
-  };
+    icon?: string | undefined;
+  } | undefined;
 }
 
 export interface CreateToyRequest {

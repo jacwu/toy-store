@@ -45,4 +45,50 @@ export class MemoryToyTypeRepository {
     const toyType = toyTypesData.find(t => t.id === id);
     return toyType ? { ...toyType } : null;
   }
+
+  /**
+   * 创建新玩具类型
+   */
+  static async create(toyTypeData: CreateToyTypeRequest): Promise<ToyType> {
+    const newToyType: ToyType = {
+      id: nextId++,
+      name: toyTypeData.name,
+      description: toyTypeData.description,
+      ...(toyTypeData.icon !== undefined && { icon: toyTypeData.icon })
+    };
+    toyTypesData.push(newToyType);
+    return { ...newToyType };
+  }
+
+  /**
+   * 更新玩具类型
+   */
+  static async update(id: number, toyTypeData: UpdateToyTypeRequest): Promise<ToyType | null> {
+    const index = toyTypesData.findIndex(t => t.id === id);
+    if (index === -1) {
+      return null;
+    }
+    
+    const existingToyType = toyTypesData[index]!; // We know it exists because index !== -1
+    const updatedToyType: ToyType = {
+      id: existingToyType.id,
+      name: toyTypeData.name ?? existingToyType.name,
+      description: toyTypeData.description ?? existingToyType.description,
+      icon: toyTypeData.icon ?? existingToyType.icon
+    };
+    toyTypesData[index] = updatedToyType;
+    return { ...updatedToyType };
+  }
+
+  /**
+   * 删除玩具类型
+   */
+  static async delete(id: number): Promise<boolean> {
+    const index = toyTypesData.findIndex(t => t.id === id);
+    if (index === -1) {
+      return false;
+    }
+    toyTypesData.splice(index, 1);
+    return true;
+  }
 }

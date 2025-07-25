@@ -284,4 +284,55 @@ export class MemoryToyRepository {
     const toy = toysData.find(t => t.id === id);
     return toy ? { ...toy } : null;
   }
+
+  /**
+   * 创建新玩具
+   */
+  static async create(toyData: CreateToyRequest): Promise<Toy> {
+    const newToy: Toy = {
+      id: nextId++,
+      name: toyData.name,
+      description: toyData.description,
+      detailDescription: toyData.detailDescription,
+      price: toyData.price,
+      toyTypeId: toyData.toyTypeId
+    };
+    toysData.push(newToy);
+    return { ...newToy };
+  }
+
+  /**
+   * 更新玩具
+   */
+  static async update(id: number, toyData: UpdateToyRequest): Promise<Toy | null> {
+    const index = toysData.findIndex(t => t.id === id);
+    if (index === -1) {
+      return null;
+    }
+    
+    const existingToy = toysData[index]!; // We know it exists because index !== -1
+    const updatedToy: Toy = {
+      id: existingToy.id,
+      name: toyData.name ?? existingToy.name,
+      description: toyData.description ?? existingToy.description,
+      detailDescription: toyData.detailDescription ?? existingToy.detailDescription,
+      price: toyData.price ?? existingToy.price,
+      toyTypeId: toyData.toyTypeId ?? existingToy.toyTypeId,
+      toyType: existingToy.toyType
+    };
+    toysData[index] = updatedToy;
+    return { ...updatedToy };
+  }
+
+  /**
+   * 删除玩具
+   */
+  static async delete(id: number): Promise<boolean> {
+    const index = toysData.findIndex(t => t.id === id);
+    if (index === -1) {
+      return false;
+    }
+    toysData.splice(index, 1);
+    return true;
+  }
 }

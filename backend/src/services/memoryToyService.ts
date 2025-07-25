@@ -23,15 +23,16 @@ export class ToyService {
       const toysWithType = await Promise.all(
         toys.map(async (toy) => {
           const toyType = await MemoryToyTypeRepository.findById(toy.toyTypeId);
-          return {
+          const result: Toy = {
             ...toy,
             toyType: toyType ? {
               id: toyType.id,
               name: toyType.name,
               description: toyType.description,
-              icon: toyType.icon
+              ...(toyType.icon !== undefined && { icon: toyType.icon })
             } : undefined
           };
+          return result;
         })
       );
 
@@ -53,15 +54,16 @@ export class ToyService {
       const toysWithType = await Promise.all(
         toys.map(async (toy) => {
           const toyType = await MemoryToyTypeRepository.findById(toy.toyTypeId);
-          return {
+          const result: Toy = {
             ...toy,
             toyType: toyType ? {
               id: toyType.id,
               name: toyType.name,
               description: toyType.description,
-              icon: toyType.icon
+              ...(toyType.icon !== undefined && { icon: toyType.icon })
             } : undefined
           };
+          return result;
         })
       );
 
@@ -84,15 +86,16 @@ export class ToyService {
 
       // 添加玩具类型信息
       const toyType = await MemoryToyTypeRepository.findById(toy.toyTypeId);
-      return {
+      const result: Toy = {
         ...toy,
         toyType: toyType ? {
           id: toyType.id,
           name: toyType.name,
           description: toyType.description,
-          icon: toyType.icon
+          ...(toyType.icon !== undefined && { icon: toyType.icon })
         } : undefined
       };
+      return result;
     } catch (error) {
       console.error('获取玩具失败:', error);
       if (error instanceof Error && error.message === '玩具不存在') {
