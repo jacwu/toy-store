@@ -76,6 +76,42 @@ const FeatureItem = styled.li`
   }
 `;
 
+const ContactInfo = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1rem;
+`;
+
+const ContactItem = styled.div`
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  background: #f7fafc;
+  border-radius: 8px;
+  border-left: 4px solid #667eea;
+`;
+
+const ContactIcon = styled.span`
+  font-size: 1.5rem;
+  margin-right: 0.75rem;
+`;
+
+const ContactDetails = styled.div`
+  flex: 1;
+`;
+
+const ContactLabel = styled.div`
+  font-weight: 600;
+  color: #2d3748;
+  margin-bottom: 0.25rem;
+`;
+
+const ContactValue = styled.div`
+  color: #4a5568;
+  font-size: 0.9rem;
+`;
+
 export default function AboutPage() {
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -139,6 +175,43 @@ export default function AboutPage() {
             <Text>
               让每个孩子都能在安全、快乐的环境中享受玩具带来的无穷乐趣，这是我们永恒的追求。
             </Text>
+          </Section>
+
+          <Section>
+            <SectionTitle>联系我们</SectionTitle>
+            <Text>
+              我们随时为您提供咨询和服务支持，欢迎通过以下方式联系我们：
+            </Text>
+            <ContactInfo>
+              <ContactItem>
+                <ContactIcon>📞</ContactIcon>
+                <ContactDetails>
+                  <ContactLabel>客服热线</ContactLabel>
+                  <ContactValue>400-123-4567</ContactValue>
+                </ContactDetails>
+              </ContactItem>
+              <ContactItem>
+                <ContactIcon>📧</ContactIcon>
+                <ContactDetails>
+                  <ContactLabel>邮箱地址</ContactLabel>
+                  <ContactValue>service@toystore.com</ContactValue>
+                </ContactDetails>
+              </ContactItem>
+              <ContactItem>
+                <ContactIcon>📍</ContactIcon>
+                <ContactDetails>
+                  <ContactLabel>门店地址</ContactLabel>
+                  <ContactValue>北京市朝阳区玩具大厦101号</ContactValue>
+                </ContactDetails>
+              </ContactItem>
+              <ContactItem>
+                <ContactIcon>🕒</ContactIcon>
+                <ContactDetails>
+                  <ContactLabel>营业时间</ContactLabel>
+                  <ContactValue>周一至周日 9:00-21:00</ContactValue>
+                </ContactDetails>
+              </ContactItem>
+            </ContactInfo>
           </Section>
         </Content>
       </motion.div>
