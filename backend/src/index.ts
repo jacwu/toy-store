@@ -9,6 +9,7 @@ import { requestLogger } from './middleware/requestLogger';
 import toyTypeRoutes from './routes/toyTypeRoutes';
 import toyRoutes from './routes/toyRoutes';
 import userRoutes from './routes/userRoutes'; // Import user routes
+import feedbackRoutes from './routes/feedbackRoutes'; // Import feedback routes
 
 // 加载环境变量
 dotenv.config();
@@ -55,6 +56,7 @@ app.get('/health', (_req: Request, res: Response) => {
 app.use('/api/toy-types', toyTypeRoutes);
 app.use('/api/toys', toyRoutes);
 app.use('/api/users', userRoutes); // Add user routes
+app.use('/api/feedback', feedbackRoutes); // Add feedback routes
 
 // 404 处理
 app.use('*', (_req: Request, res: Response) => {

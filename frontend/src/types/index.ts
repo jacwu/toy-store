@@ -43,3 +43,17 @@ export interface Order {
   totalAmount: number;
   itemCount: number;
 }
+
+export interface Feedback {
+  id: number;
+  name: string;
+  email: string;
+  message: string;
+  createdAt: Date;
+}
+
+export interface CreateFeedbackRequest {
+  name: string;
+  email: string;
+  message: string;
+}
