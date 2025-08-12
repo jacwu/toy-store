@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { Toy, ToyType, CreateToyRequest, UpdateToyRequest } from '@/types';
+import { Toy, ToyType, CreateToyRequest, UpdateToyRequest, CreateFeedbackRequest, Feedback } from '@/types';
 
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000';
 
@@ -103,6 +103,31 @@ export const userApi = {
         }
       }
       throw error; // Fallback for non-Axios errors or if response is not there
+    }
+  },
+};
+
+export const feedbackApi = {
+  submitFeedback: async (feedback: CreateFeedbackRequest): Promise<Feedback> => {
+    try {
+      const response = await apiClient.post('/api/feedback', feedback);
+      return response.data.data; // The backend sends { success, message, data }
+    } catch (error) {
+      console.error('Error submitting feedback:', error);
+      if (axios.isAxiosError(error) && error.response) {
+        throw error.response.data || error;
+      }
+      throw error;
+    }
+  },
+  getAllFeedback: async (): Promise<Feedback[]> => {
+    try {
+      const response = await apiClient.get('/api/feedback');
+      const data = response.data?.data || response.data;
+      return Array.isArray(data) ? data : [];
+    } catch (error) {
+      console.error('Error fetching feedback:', error);
+      return [];
     }
   },
 };
