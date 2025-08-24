@@ -58,4 +58,16 @@ export class UserController {
       }
     }
   }
+
+  static async getAllUsers(req: Request, res: Response, next: NextFunction): Promise<void> {
+    try {
+      const users = await UserService.getAllUsers();
+      res.status(200).json({
+        success: true,
+        data: users,
+      });
+    } catch (error) {
+      next(error);
+    }
+  }
 }

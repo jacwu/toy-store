@@ -105,6 +105,15 @@ export const userApi = {
       throw error; // Fallback for non-Axios errors or if response is not there
     }
   },
+  getAllUsers: async (): Promise<any[]> => {
+    try {
+      const response = await apiClient.get('/api/users');
+      return response.data?.data || [];
+    } catch (error) {
+      console.error('Error fetching users:', error);
+      return [];
+    }
+  },
 };
 
 export default apiClient;

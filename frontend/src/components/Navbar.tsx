@@ -152,6 +152,17 @@ export default function Navbar() {
 
           {!isLoading && isLoggedIn && user ? (
             <>
+              <Link href="/admin" passHref>
+                <NavLink
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.2 }}
+                >
+                  用户管理
+                </NavLink>
+              </Link>
               <WelcomeText
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}

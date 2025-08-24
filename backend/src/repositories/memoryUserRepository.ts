@@ -20,6 +20,10 @@ export class MemoryUserRepository {
     return newUserWithoutPassword;
   }
 
+  static async getAll(): Promise<User[]> {
+    return [...this.users];
+  }
+
   public static clear(): void {
     MemoryUserRepository.users = [{ id: 0, username: 'jacwu', password: 'jacwu' }];
     MemoryUserRepository.nextId = 1;
