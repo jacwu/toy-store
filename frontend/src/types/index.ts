@@ -43,3 +43,14 @@ export interface Order {
   totalAmount: number;
   itemCount: number;
 }
+
+export interface Review {
+  id: string;
+  userId: number;
+  username: string;
+  toyId: number;
+  toyName: string;
+  rating: number; // 1-5 stars
+  comment: string;
+  timestamp: string;
+}
